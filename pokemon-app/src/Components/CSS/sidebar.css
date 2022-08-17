@@ -1,0 +1,88 @@
+:root {
+  --fill: rgb(225, 225, 225);
+  --sideBarWidth: 12rem;
+}
+
+.sidebar {
+  height: 100vh;
+  width: var(--sideBarWidth);
+  background: #393982;
+  position: fixed;
+  transition: width 500ms ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+#pokemonball {
+  width: 60%;
+  transform: rotate(0);
+  transition: transform 500ms ease;
+}
+.sidebar:hover {
+  width: 25rem;
+}
+.sidebar:hover .sidebar-span {
+  display: inline-block;
+}
+.sidebar:hover .li-svg {
+  margin-right: 2rem;
+}
+.sidebar-li:hover {
+  background: var(--DarkBlue);
+}
+
+#img-li:hover {
+  background: transparent;
+  cursor: pointer;
+}
+
+.sidebar:hover #pokemonball {
+  transform: rotate(360deg);
+}
+
+.navbar-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.sidebar-li {
+  fill: rgb(225, 225, 225);
+  margin-bottom: 4rem;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+}
+
+li:first-child {
+  margin-top: 6rem;
+}
+
+.li-svg {
+  width: 6rem;
+}
+
+.sidebar-span {
+  display: none;
+  font-size: 2rem;
+  color: var(--fill);
+  margin: auto;
+  margin-left: 0.6rem;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
