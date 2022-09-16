@@ -15,8 +15,6 @@ function Star(props) {
     }
   }
   useEffect(() => {
-    console.log("(props.currentPokemon use effect");
-    console.log(props.currentPokemon);
     if (props.favouritePokemons.includes(props.currentPokemon)) {
       setIsYellow(true);
     } else {

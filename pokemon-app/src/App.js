@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import raw from "./PokemonList2.txt";
+import TextFileWithPokemonInfo from "./PokemonList.txt";
 import Sidebar from "./Components/Sidebar";
 import Search from "./Pages/Search";
 import { Route, Routes } from "react-router-dom";
@@ -13,16 +13,16 @@ function App() {
   const [favouritePokemons, setFavouritePokemons] = useState([]);
 
   useEffect(() => {
-    let tmp = localStorage.getItem("favouritePokemons");
-    console.log("tmp");
-    console.log(tmp);
-    if (tmp) {
-      setFavouritePokemons(JSON.parse(tmp));
+    let favouritePokemonFromLocalStorage =
+      localStorage.getItem("favouritePokemons");
+    //checks if variable is null, and if not then adding it to the list (check for truthy value)
+    if (favouritePokemonFromLocalStorage) {
+      setFavouritePokemons(JSON.parse(favouritePokemonFromLocalStorage));
     }
   }, []);
 
   useEffect(() => {
-    fetch(raw)
+    fetch(TextFileWithPokemonInfo)
       .then((r) => r.text())
       .then((text) => {
         setPokemonString(text);
@@ -51,8 +51,6 @@ function App() {
     }
   }, [pokemonString]);
 
-
-  
   let PokemonSearch = (
     <Search
       pokemons={pokemons}

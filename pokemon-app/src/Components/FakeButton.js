@@ -15,11 +15,10 @@ function FakeButton(props) {
 
   function findPokemon() {
     let pokemonName = props.inputValue;
-    console.log(pokemonName);
-    let find = pokemonNames.findIndex((element) => {
+    let findIndex = pokemonNames.findIndex((element) => {
       return element.toLowerCase() === pokemonName.toLowerCase();
     });
-    if (find > -1) {
+    if (findIndex > -1) {
       props.setInputValue("");
       props.setCurrentPokemon(pokemonName.toLowerCase());
     } else {
@@ -37,17 +36,15 @@ function FakeButton(props) {
     }
   }, [props.currentPokemon]);
 
+  const keyDownHandler = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      console.log(props.inputValue);
+      findPokemon();
+    }
+  };
   useEffect(() => {
-    const keyDownHandler = (event) => {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        console.log(props.inputValue);
-        findPokemon();
-      }
-    };
-
     document.addEventListener("keydown", keyDownHandler);
-
     return () => {
       document.removeEventListener("keydown", keyDownHandler);
     };
@@ -81,8 +78,6 @@ function FakeButton(props) {
 
   useEffect(() => {
     findPokemon();
-    console.log(props.inputValue);
-    console.log(props.currentNumber);
   }, [props.currentNumber]);
   return (
     <input
