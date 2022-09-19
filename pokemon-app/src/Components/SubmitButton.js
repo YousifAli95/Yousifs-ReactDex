@@ -106,13 +106,11 @@ function SubmitButton(props) {
   }
 
   function ChangePokemonWithArrowKeys(delta) {
-    console.log("current " + props.currentNumber);
     let newPokemon = pokemonNames.filter(
       (name) =>
         props.pokemons[name].Number ===
         "#" + String(props.currentNumber + delta).padStart(3, "0")
     );
-    console.log(newPokemon);
     props.setCurrentPokemon(newPokemon);
     let newNumber = props.pokemons[newPokemon].Number.replace("#", "");
     newNumber = parseInt(newNumber);
