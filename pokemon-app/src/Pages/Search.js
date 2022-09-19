@@ -48,6 +48,7 @@ function Search({ pokemons, favouritePokemons, setFavouritePokemons }) {
           pokemons={pokemons}
           setInputValue={setInputValue}
           setCurrentNumber={setCurrentNumber}
+          currentNumber={currentNumber}
           showImage={showImage}
           width={"40 rem"}
         />

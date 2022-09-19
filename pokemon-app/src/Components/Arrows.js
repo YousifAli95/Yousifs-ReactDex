@@ -3,23 +3,26 @@ import "./CSS/arrows.css";
 
 function Arrows(props) {
   function changePokemon(event) {
-    let currentNumber = parseInt(
-      props.pokemons[props.currentPokemon]["Number"].substring(1)
-    );
-    let newNumber = currentNumber + parseInt(event.target.dataset.tag);
-    let tmp = [];
-    for (const key in props.pokemons) {
-      if (key !== "") {
-        tmp = [...tmp, [key, props.pokemons[key]["Number"]]];
+    console.log(props.currentNumber);
+    let newNumber = props.currentNumber + parseInt(event.target.dataset.tag);
+    if (newNumber > 0 && newNumber < 898) {
+      let tmp = [];
+      for (const key in props.pokemons) {
+        if (key !== "") {
+          tmp = [...tmp, [key, props.pokemons[key]["Number"]]];
+        }
       }
+      console.log(newNumber);
+      let newPokemon = tmp.filter(
+        (o) => o[1] === "#" + String(newNumber).padStart(3, "0")
+      );
+      props.setInputValue(newPokemon[0][0]);
+      props.setCurrentNumber(newNumber);
+    } else {
+      alert("There are only Pokémons with the numbers 1-898");
     }
-    console.log(newNumber);
-    let newPokemon = tmp.filter(
-      (o) => o[1] === "#" + String(newNumber).padStart(3, "0")
-    );
-    props.setInputValue(newPokemon[0][0]);
-    props.setCurrentNumber(newNumber);
   }
+
   function randomPokemon() {
     const randomNumber = Math.floor(Math.random() * (898 - 1)) + 1;
     let tmp = [];

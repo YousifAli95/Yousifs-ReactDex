@@ -9,9 +9,13 @@ function SubmitButton(props) {
       console.log(props.inputValue);
       findPokemon();
     } else if (event.key === "ArrowRight") {
-      ChangePokemonWithArrowKeys(1);
+      if (props.currentNumber < 898) {
+        ChangePokemonWithArrowKeys(1);
+      }
     } else if (event.key === "ArrowLeft") {
-      ChangePokemonWithArrowKeys(-1);
+      if (props.currentNumber > 0) {
+        ChangePokemonWithArrowKeys(-1);
+      }
     }
   };
   useEffect(() => {
@@ -64,7 +68,13 @@ function SubmitButton(props) {
       );
     } else {
       if (pokemonName !== "") {
-        alert(`${pokemonName} is not a pokémon!`);
+        if (parseInt(pokemonName) || parseInt(pokemonName) == 0) {
+          alert(
+            `there is no Pokemon with the number ${pokemonName}, try a number between 1-898!`
+          );
+        } else {
+          alert(`there is no Pokémon with the name ${pokemonName}!`);
+        }
       }
     }
   }
