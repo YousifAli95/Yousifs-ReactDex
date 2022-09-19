@@ -1,6 +1,6 @@
 import "./../App.css";
 import React, { useEffect, useState } from "react";
-import FakeButton from "./FakeButton";
+import SubmitButton from "./SubmitButton";
 import "./CSS/FakeDataList.css";
 
 function FakeDataList(props) {
@@ -12,12 +12,10 @@ function FakeDataList(props) {
         tmp = [...tmp, key];
       }
     }
-    tmp.map((name, index) => {
-      return setOptions((p) => [
-        ...p,
-        <option key={index} value={props.pokemons[name]["Name"]} />,
-      ]);
+    let optionsMap = tmp.map((name, index) => {
+      return <option key={index} value={props.pokemons[name]["Name"]} />;
     });
+    setOptions(optionsMap);
   }, [props.pokemons]);
 
   function DataListOnChange(event) {
@@ -38,7 +36,7 @@ function FakeDataList(props) {
         />
 
         <datalist id="pokemon-datalist">{options}</datalist>
-        <FakeButton
+        <SubmitButton
           setPicture={props.setPicture}
           setInputValue={props.setInputValue}
           inputValue={props.inputValue}
@@ -47,6 +45,7 @@ function FakeDataList(props) {
           setCurrentPokemon={props.setCurrentPokemon}
           currentPokemon={props.currentPokemon}
           currentNumber={props.currentNumber}
+          setCurrentNumber={props.setCurrentNumber}
         />
       </div>
     </div>

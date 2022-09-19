@@ -44,4 +44,5 @@
   background: linear-gradient(to left, rgb(8, 8, 8), rgb(0, 0, 0));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-align: center;
 }

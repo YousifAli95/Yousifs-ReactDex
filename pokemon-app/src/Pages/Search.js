@@ -3,7 +3,6 @@ import Information from "./../Components/Information";
 import Arrows from "./../Components/Arrows";
 import Star from "./../Components/Star.js";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 
 function Search({ pokemons, favouritePokemons, setFavouritePokemons }) {
   const [currentNumber, setCurrentNumber] = useState("");
@@ -22,6 +21,10 @@ function Search({ pokemons, favouritePokemons, setFavouritePokemons }) {
     }
   }, [currentPokemon]);
 
+  useEffect(() => {
+    document.body.style.background = "#87CEEB";
+  }, []);
+
   return (
     <div className="search-container">
       <div className="input-div">
@@ -34,6 +37,7 @@ function Search({ pokemons, favouritePokemons, setFavouritePokemons }) {
           setCurrentPokemon={setCurrentPokemon}
           currentPokemon={currentPokemon}
           currentNumber={currentNumber}
+          setCurrentNumber={setCurrentNumber}
         />
       </div>
 
@@ -63,7 +67,6 @@ function Search({ pokemons, favouritePokemons, setFavouritePokemons }) {
                 favouritePokemons={favouritePokemons}
                 starLeft={"92%"}
               />
-
               <Information
                 currentPokemon={currentPokemon}
                 pokemons={pokemons}
