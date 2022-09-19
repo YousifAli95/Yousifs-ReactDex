@@ -9,7 +9,6 @@ import Favourites from "./Pages/Favourites";
 function App() {
   const [pokemons, setPokemons] = useState({});
   const [pokemonString, setPokemonString] = useState("");
-
   const [favouritePokemons, setFavouritePokemons] = useState([]);
 
   useEffect(() => {
