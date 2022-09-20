@@ -18,6 +18,16 @@ function SubmitButton(props) {
       }
     }
   };
+
+  useEffect(() => {
+    document.addEventListener("keydown", keyDownHandler);
+    console.log("Adding EventListener");
+    return () => {
+      document.removeEventListener("keydown", keyDownHandler);
+      console.log("removing EventListener");
+    };
+  }, [pokemonNames, props.currentNumber, props.inputValue]);
+
   useEffect(() => {
     let tmp = [];
     for (const key in props.pokemons) {
@@ -39,15 +49,6 @@ function SubmitButton(props) {
   useEffect(() => {
     findPokemon();
   }, [props.currentNumber]);
-
-  useEffect(() => {
-    document.addEventListener("keydown", keyDownHandler);
-    console.log("Adding EventListener");
-    return () => {
-      document.removeEventListener("keydown", keyDownHandler);
-      console.log("removing EventListener");
-    };
-  }, [pokemonNames, props.currentNumber]);
 
   function findPokemon() {
     let pokemonName = props.inputValue;
@@ -100,7 +101,7 @@ function SubmitButton(props) {
       return "#FFC0CB";
     } else if (color === "Yellow") {
       return "#F5DEB3";
-    } else if (color === "black") {
+    } else if (color === "Black") {
       return "#708090";
     } else {
       return "#87CEEB";

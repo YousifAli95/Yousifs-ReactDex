@@ -54,6 +54,10 @@
   height: 100%;
 }
 
+.sidebar:hover .sidebar-li:not(#img-li) {
+  justify-content: left;
+}
+
 .sidebar-li {
   fill: rgb(225, 225, 225);
   margin-bottom: 4rem;

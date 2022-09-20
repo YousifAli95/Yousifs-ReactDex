@@ -12,8 +12,9 @@ function App() {
   const [favouritePokemons, setFavouritePokemons] = useState([]);
 
   useEffect(() => {
-    let favouritePokemonFromLocalStorage =
-      localStorage.getItem("favouritePokemons");
+    let favouritePokemonFromLocalStorage = localStorage.getItem(
+      "favouritePokemons"
+    );
     //checks if variable is null, and if not then adding it to the list (check for truthy value)
     if (favouritePokemonFromLocalStorage) {
       setFavouritePokemons(JSON.parse(favouritePokemonFromLocalStorage));
@@ -55,6 +56,7 @@ function App() {
       pokemons={pokemons}
       setFavouritePokemons={setFavouritePokemons}
       favouritePokemons={favouritePokemons}
+      key={Math.random()}
     />
   );
 
@@ -63,6 +65,7 @@ function App() {
       favouritePokemons={favouritePokemons}
       setFavouritePokemons={setFavouritePokemons}
       pokemons={pokemons}
+      
     />
   );
 
