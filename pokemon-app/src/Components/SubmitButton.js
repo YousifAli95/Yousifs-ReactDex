@@ -42,10 +42,12 @@ function SubmitButton(props) {
 
   useEffect(() => {
     document.addEventListener("keydown", keyDownHandler);
+    console.log("Adding EventListener");
     return () => {
       document.removeEventListener("keydown", keyDownHandler);
+      console.log("removing EventListener");
     };
-  });
+  }, [pokemonNames, props.currentNumber]);
 
   function findPokemon() {
     let pokemonName = props.inputValue;
@@ -68,7 +70,7 @@ function SubmitButton(props) {
       );
     } else {
       if (pokemonName !== "") {
-        if (parseInt(pokemonName) || parseInt(pokemonName) == 0) {
+        if (parseInt(pokemonName) || parseInt(pokemonName) === 0) {
           alert(
             `there is no Pokemon with the number ${pokemonName}, try a number between 1-898!`
           );
@@ -112,7 +114,7 @@ function SubmitButton(props) {
         "#" + String(props.currentNumber + delta).padStart(3, "0")
     );
     props.setCurrentPokemon(newPokemon);
-    let newNumber = props.pokemons[newPokemon].Number.replace("#", "");
+    let newNumber = props.pokemons[newPokemon]["Number"].replace("#", "");
     newNumber = parseInt(newNumber);
     props.setCurrentNumber(newNumber);
   }

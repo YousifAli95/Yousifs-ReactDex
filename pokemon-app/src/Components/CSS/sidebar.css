@@ -25,9 +25,11 @@
 }
 .sidebar:hover .sidebar-span {
   display: inline-block;
+  margin-right: 1rem;
 }
 .sidebar:hover .li-svg {
   margin-right: 2rem;
+  margin-left: 1rem;
 }
 .sidebar-li:hover {
   background: var(--DarkBlue);
@@ -62,6 +64,7 @@
   text-decoration: none;
   position: relative;
   cursor: pointer;
+  padding: 0.5rem 0;
 }
 
 li:first-child {
