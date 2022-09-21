@@ -1,12 +1,17 @@
 import "./../App.css";
 import StarFavourite from "../Components/StarFavourite";
 import "./CSS/Favourites.css";
+import { useEffect } from "react";
 
 function Favourites({ pokemons, favouritePokemons, setFavouritePokemons }) {
-  let tmp = favouritePokemons.sort(function(a, b) {
-    return pokemons[a]["Number"].localeCompare(pokemons[b]["Number"]);
-  });
-  setFavouritePokemons(tmp);
+  useEffect(() => {
+    let tmp = favouritePokemons.sort(function(a, b) {
+      return pokemons[a]["Number"].localeCompare(pokemons[b]["Number"]);
+    });
+    setFavouritePokemons(tmp);
+    console.log("When is this happening?");
+  }, [pokemons, favouritePokemons, setFavouritePokemons]);
+
   let favouriteElement;
   if (favouritePokemons.length > 0) {
     console.log(favouritePokemons.length);

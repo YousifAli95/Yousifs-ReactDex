@@ -10,7 +10,8 @@ function StarFavourite(props) {
       let newFavouritePokemons = props.favouritePokemons.filter((p) => {
         return p !== props.starPokemon;
       });
-      console.log(newFavouritePokemons);
+      //console.log(newFavouritePokemons);
+      console.log("Change Color");
       props.setFavouritePokemons(newFavouritePokemons);
     }
   }
@@ -20,7 +21,7 @@ function StarFavourite(props) {
       "favouritePokemons",
       JSON.stringify(props.favouritePokemons)
     );
-    console.log("Favourites");
+    console.log("Favouritespokemon use effect");
     console.log(props.favouritePokemons);
   }, [props.favouritePokemons]);
   return (

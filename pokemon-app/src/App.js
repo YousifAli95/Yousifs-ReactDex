@@ -15,13 +15,14 @@ function App() {
     let favouritePokemonFromLocalStorage = localStorage.getItem(
       "favouritePokemons"
     );
-    //checks if variable is null, and if not then adding it to the list (check for truthy value)
+    //checks if variable is null, and if not then adding it to the list
     if (favouritePokemonFromLocalStorage) {
       setFavouritePokemons(JSON.parse(favouritePokemonFromLocalStorage));
     }
   }, []);
 
   useEffect(() => {
+    let tmpPokemons = {};
     fetch(TextFileWithPokemonInfo)
       .then((r) => r.text())
       .then((text) => {
@@ -31,8 +32,8 @@ function App() {
     for (let i = 0; i < pokemonArray.length; i++) {
       let onePokemon = pokemonArray[i].split(", ");
       //console.log(onePokemon);
-      let tmp = {};
-      tmp = {
+      let tmpPokemon = {};
+      tmpPokemon = {
         Name: onePokemon[0],
         Number: onePokemon[1],
         Generation: onePokemon[2],
@@ -44,11 +45,10 @@ function App() {
         Type2: onePokemon[8],
         Special: onePokemon[9],
       };
-      setPokemons((prevState) => ({
-        ...prevState,
-        [onePokemon[0].toLowerCase()]: tmp,
-      }));
+      tmpPokemons[onePokemon[0].toLowerCase()] = tmpPokemon;
     }
+    console.log("SetPokemon");
+    setPokemons(tmpPokemons);
   }, [pokemonString]);
 
   let PokemonSearch = (
@@ -56,7 +56,6 @@ function App() {
       pokemons={pokemons}
       setFavouritePokemons={setFavouritePokemons}
       favouritePokemons={favouritePokemons}
-      key={Math.random()}
     />
   );
 
@@ -65,7 +64,6 @@ function App() {
       favouritePokemons={favouritePokemons}
       setFavouritePokemons={setFavouritePokemons}
       pokemons={pokemons}
-      
     />
   );
 
