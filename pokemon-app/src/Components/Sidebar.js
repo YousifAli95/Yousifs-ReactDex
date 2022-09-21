@@ -6,7 +6,7 @@ function Sidebar() {
     <div className="sidebar">
       <nav>
         <ul className="navbar-ul">
-          <Link to="/">
+          <Link to="/" reloadDocument>
             <li id="img-li" className="sidebar-li">
               <img
                 id="pokemonball"
