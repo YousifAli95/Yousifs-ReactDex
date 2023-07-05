@@ -79,6 +79,17 @@ body {
   cursor: pointer;
 }
 
-.star:hover {
-  fill: yellow !important;
+.star:active {
+  transform: translateY(0.3rem);
+}
+
+.star-is-yellow, .star-is-not-yellow:hover{
+fill: yellow !important;
+}
+
+.star-is-not-yellow, .white-hover:hover{
+  fill: white !important;
+}
+.starleft-87{
+  left: 87%;
 }
