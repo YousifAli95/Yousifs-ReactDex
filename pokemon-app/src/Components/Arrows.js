@@ -1,44 +1,48 @@
-import React, { useEffect, useState } from "react";
 import "./CSS/arrows.css";
+import { getPokemonNumber } from "../utils/pokemonUtils";
+import { PokemonsContext } from "../App";
+import { useContext } from "react";
 
 function Arrows(props) {
+  const pokemons = useContext(PokemonsContext);
+
+  // Will change the current shown pokemon to a new one which has plus/minus 1 diffrence in number
   function changePokemon(event) {
-    console.log(props.currentNumber);
-    let newNumber = props.currentNumber + parseInt(event.target.dataset.tag);
-    if (newNumber > 0 && newNumber < 898) {
-      let tmp = [];
-      for (const key in props.pokemons) {
-        if (key !== "") {
-          tmp = [...tmp, [key, props.pokemons[key]["Number"]]];
-        }
-      }
-      console.log(newNumber);
-      let newPokemon = tmp.filter(
-        (o) => o[1] === "#" + String(newNumber).padStart(3, "0")
-      );
-      props.setInputValue(newPokemon[0][0]);
-      props.setCurrentNumber(newNumber);
+    const newNumber =
+      props.currentNumber.current + parseInt(event.target.dataset.delta);
+
+    if (newNumber > 0 && newNumber <= 898) {
+      const newPokemon = getNewPokemon(newNumber);
+      props.setInputValue(newPokemon);
+      //This will trigger an useEffect that will trigger the changing of current shown pokemon
+      props.currentNumber.current = newNumber;
+
+      console.log("changePokemon();", newNumber, newPokemon);
     } else {
-      alert("There are only Pokémons with the numbers 1-898");
+      alert("There are only Pokémon with numbers 1-898");
     }
   }
 
+  // Will change the current shown pokemon to a new random pokemon
   function randomPokemon() {
     const randomNumber = Math.floor(Math.random() * (898 - 1)) + 1;
-    let tmp = [];
-    for (const key in props.pokemons) {
-      if (key !== "") {
-        tmp = [...tmp, [key, props.pokemons[key]["Number"]]];
-      }
-    }
-    let tmpPoke = tmp.filter(
-      (o) => o[1] === "#" + String(randomNumber).padStart(3, "0")
-    );
-    console.log(randomNumber);
-    console.log(tmpPoke);
-    props.setInputValue(tmpPoke[0][0]);
-    props.setCurrentNumber(randomNumber);
+    const newPokemon = getNewPokemon(randomNumber);
+    props.setInputValue(newPokemon);
+    //This will trigger an useEffect that will trigger the changing of current shown pokemon
+    props.currentNumber.current = randomNumber;
+
+    console.log("RandomPokemon():", randomNumber, newPokemon);
   }
+
+  //Retrieves the name of a new Pokémon based on the provided newNumber
+  function getNewPokemon(newNumber) {
+    const [newPokemon] = Object.keys(pokemons).filter((pokemonName) => {
+      return pokemons[pokemonName].Number === getPokemonNumber(newNumber);
+    });
+
+    return newPokemon;
+  }
+
   return (
     <div className="two-arrows">
       {props.showImage ? (
@@ -48,7 +52,7 @@ function Arrows(props) {
             alt=""
             id="left-arrow"
             className="arrows"
-            data-tag={-1}
+            data-delta={-1}
             onClick={changePokemon}
           />
           <button onClick={randomPokemon} className="Random-Button">
@@ -59,7 +63,7 @@ function Arrows(props) {
             alt=""
             id="right-arrow"
             className="arrows"
-            data-tag={1}
+            data-delta={1}
             onClick={changePokemon}
           />
         </>

@@ -17,7 +17,7 @@
 
 #submit-btn:hover{
   background-color: var(--DarkBlue);
-  color: buttonface;
+  color: var(--grey-button-color);
 }
 
 label {
