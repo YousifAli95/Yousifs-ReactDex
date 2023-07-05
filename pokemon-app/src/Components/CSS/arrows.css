@@ -20,8 +20,7 @@
   position: relative;
 }
 .arrows:hover {
-  filter: invert(0%) sepia(16%) saturate(4%) hue-rotate(27deg) brightness(78%)
-    contrast(94%);
+  filter: invert(99%) sepia(38%) saturate(35%) hue-rotate(296deg) brightness(60%) contrast(50%);
 }
 .arrows:active {
   transform: translateY(0.3rem);
@@ -40,7 +39,7 @@
 
 .Random-Button:hover{
   background-color: var(--DarkBlue);
-  color: buttonface;
+  color: var(--grey-button-color);
 }
 
 .Random-Button:active {

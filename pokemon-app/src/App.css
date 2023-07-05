@@ -2,6 +2,7 @@
 :root {
   --DarkBlue: #00008b;
   --lightBlue: #87ceeb;
+  --grey-button-color: #F0F0F0;
   font-size: 62.5%;
 }
 .App {
@@ -40,6 +41,7 @@ body {
   box-sizing: border-box;
   font-size: 2rem;
   width: 30rem;
+  padding: 1rem 1rem;
 }
 
 .pokemon-img {
