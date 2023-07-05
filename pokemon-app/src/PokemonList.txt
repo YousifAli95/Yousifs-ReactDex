@@ -836,7 +836,7 @@ Venonat, #048, Generation I, 1.0 m, 30.0 kg, Insect Pokemon, Purple, Bug, Poison
 Venusaur, #003, Generation I, 2.0 m, 100.0 kg, Seed Pokemon, Green, Grass, Poison, N/A, 
 Vespiquen, #416, Generation IV, 1.2 m, 38.5 kg, Beehive Pokemon, Yellow, Bug, Flying, N/A, 
 Vibrava, #329, Generation III, 1.1 m, 15.3 kg, Vibration Pokemon, Green, Ground, Dragon, N/A, 
-Victini, #495, Generation V, 0.4 m, 4.0 kg, Victory Pokemon, Yellow, Psychic, Fire, Mythical, 
+Victini, #494, Generation V, 0.4 m, 4.0 kg, Victory Pokemon, Yellow, Psychic, Fire, Mythical, 
 Victreebel, #071, Generation I, 1.7 m, 15.5 kg, Flycatcher Pokemon, Green, Grass, Poison, N/A, 
 Vigoroth, #288, Generation III, 1.4 m, 46.5 kg, Wild Monkey Pokemon, White, Normal, N/A, N/A, 
 Vikavolt, #738, Generation VII, 1.5 m, 45.0 kg, Stag Beetle Pokemon, Blue, Bug, Electric, N/A, 
