@@ -37,6 +37,12 @@
   color: var(--DarkBlue);
   cursor: pointer;
 }
+
+.Random-Button:hover{
+  background-color: var(--DarkBlue);
+  color: buttonface;
+}
+
 .Random-Button:active {
   box-shadow: 0 4px var(--DarkBlue);
   transform: translateY(0.2rem);

@@ -1,0 +1,37 @@
+
+#submit-btn {
+  font-size: 2rem;
+  border: none;
+  height: 4rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  width: 10rem;
+  outline: 0.2rem solid var(--DarkBlue);
+  color: var(--DarkBlue);
+  cursor: pointer;
+}
+#submit-btn:active {
+  box-shadow: 0 4px var(--DarkBlue);
+  transform: translateY(0.2rem);
+}
+
+#submit-btn:hover{
+  background-color: var(--DarkBlue);
+  color: buttonface;
+}
+
+label {
+  display: block;
+  margin: 1.5rem;
+  margin-top: 3rem;
+
+  margin-left: 0rem;
+  font-size: 2.6rem;
+  cursor: pointer;
+}
+
+.Fake-DataList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
