@@ -1,8 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import "./CSS/star.css";
+import { PokemonsContext } from "../App";
 
 export default function Star(props) {
   const [isYellow, setIsYellow] = useState(false);
+  const [, favouritePokemons, setFavouritePokemons] =
+    useContext(PokemonsContext);
   const starRef = useRef();
 
   // Adds the pokemon to the favourites list. Removes the pokemon if it is already there. Also changes the star color accordingly
@@ -10,31 +13,31 @@ export default function Star(props) {
     event.preventDefault(); //prevents a link redirection that would otherwise happen
     setIsYellow((prevState) => !prevState);
     if (isYellow) {
-      let newFavouritePokemons = props.favouritePokemons.filter(
+      let newFavouritePokemons = favouritePokemons?.filter(
         (p) => p !== props.currentPokemon
       );
-      props.setFavouritePokemons(newFavouritePokemons);
+      setFavouritePokemons(newFavouritePokemons);
     } else {
-      props.setFavouritePokemons((p) => [...p, props.currentPokemon]);
+      setFavouritePokemons((p) => [...p, props.currentPokemon]);
     }
   }
 
   // Sets the star color of current pokemon
   useEffect(() => {
-    if (props.favouritePokemons.includes(props.currentPokemon)) {
+    if (favouritePokemons?.includes(props.currentPokemon)) {
       setIsYellow(true);
     } else {
       setIsYellow(false);
     }
-  }, [props.currentPokemon, props.favouritePokemons]);
+  }, [props.currentPokemon, favouritePokemons]);
 
   // Updates the favoruites pokemon list on the browser's memory
   useEffect(() => {
     localStorage.setItem(
       "favouritePokemons",
-      JSON.stringify(props.favouritePokemons)
+      JSON.stringify(favouritePokemons)
     );
-  }, [props.favouritePokemons]);
+  }, [favouritePokemons]);
 
   // Adds the correct classes to the svg element when props changes.
   useEffect(() => {

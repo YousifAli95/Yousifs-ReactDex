@@ -65,29 +65,17 @@ export default function App() {
     return pokemons;
   }
 
-  let pokemonSearchPage = (
-    <SearchPage
-      setFavouritePokemons={setFavouritePokemons}
-      favouritePokemons={favouritePokemons}
-    />
-  );
-
-  let favouritesPage = (
-    <FavouritesPage
-      favouritePokemons={favouritePokemons}
-      setFavouritePokemons={setFavouritePokemons}
-    />
-  );
-
   return (
     <div className="App">
-      <PokemonsContext.Provider value={pokemons}>
+      <PokemonsContext.Provider
+        value={[pokemons, favouritePokemons, setFavouritePokemons]}
+      >
         <Sidebar />
         <div className="dummy-sidebar"></div>
         <div className="route-container">
           <Routes>
-            <Route path="/" element={pokemonSearchPage} />
-            <Route path="/Favourites" element={favouritesPage} />
+            <Route path="/" element={<SearchPage />} />
+            <Route path="/Favourites" element={<FavouritesPage />} />
           </Routes>
         </div>
       </PokemonsContext.Provider>

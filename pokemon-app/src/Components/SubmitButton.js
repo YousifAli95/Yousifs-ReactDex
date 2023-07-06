@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function SubmitButton(props) {
   const inputValueRef = useRef(props.inputValue);
-  const pokemons = useContext(PokemonsContext);
+  const [pokemons] = useContext(PokemonsContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -70,10 +70,10 @@ export default function SubmitButton(props) {
       pokemonNumber = getPokemonNumber(pokemonNumber);
     }
     const pokemonNames = Object.keys(pokemons);
-    let findIndex = pokemonNames.findIndex((element) => {
+    let findIndex = pokemonNames?.findIndex((element) => {
       return (
-        element.toLowerCase() === pokemonNameOrNumber.toLowerCase() ||
-        pokemons[element].Number === pokemonNumber
+        element.toLowerCase() === pokemonNameOrNumber?.toLowerCase() ||
+        pokemons[element]?.Number === pokemonNumber
       );
     });
     if (findIndex > -1) {
@@ -134,7 +134,7 @@ export default function SubmitButton(props) {
         pokemons[name].Number ===
         getPokemonNumber(props.currentNumber.current + delta)
     )[0];
-    let newNumber = pokemons[newPokemon].Number.replace("#", "");
+    let newNumber = pokemons[newPokemon]?.Number.replace("#", "");
     newNumber = parseInt(newNumber);
     props.currentNumber.current = newNumber;
     props.setInputValue(newPokemon);

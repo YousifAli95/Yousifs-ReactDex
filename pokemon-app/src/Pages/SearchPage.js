@@ -6,10 +6,10 @@ import { PokemonsContext } from "../App";
 import React, { useEffect, useRef, useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 
-function SearchPage({ favouritePokemons, setFavouritePokemons }) {
+export default function SearchPage() {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const pokemons = useContext(PokemonsContext);
+  const [pokemons] = useContext(PokemonsContext);
   const currentNumber = useRef("");
   const [inputValue, setInputValue] = useState("");
   const [showImage, setShowImage] = useState(false);
@@ -68,11 +68,7 @@ function SearchPage({ favouritePokemons, setFavouritePokemons }) {
             </span>
             <div className="img-div">
               <img src={imageURL} alt={"A Pokemon"} className="pokemon-img" />
-              <Star
-                currentPokemon={currentPokemon}
-                setFavouritePokemons={setFavouritePokemons}
-                favouritePokemons={favouritePokemons}
-              />
+              <Star currentPokemon={currentPokemon} />
               <Information
                 currentPokemon={currentPokemon}
                 pokemons={pokemons}
@@ -84,4 +80,3 @@ function SearchPage({ favouritePokemons, setFavouritePokemons }) {
     </div>
   );
 }
-export default SearchPage;

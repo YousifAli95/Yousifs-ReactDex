@@ -3,8 +3,8 @@ import { getPokemonNumber } from "../utils/pokemonUtils";
 import { PokemonsContext } from "../App";
 import { useContext } from "react";
 
-function Arrows(props) {
-  const pokemons = useContext(PokemonsContext);
+export default function Arrows(props) {
+  const [pokemons] = useContext(PokemonsContext);
 
   // Will change the current shown pokemon to a new one which has plus/minus 1 diffrence in number
   function changePokemon(event) {
@@ -79,5 +79,3 @@ function Arrows(props) {
     </div>
   );
 }
-
-export default Arrows;

@@ -7,7 +7,7 @@ import { ReactComponent as FacebookSVG } from "../SVGs/Facebook.svg";
 import { ReactComponent as YoutubeSVG } from "../SVGs/Youtube.svg";
 import { ReactComponent as RedditSVG } from "../SVGs/Reddit.svg";
 
-function Sidebar() {
+export default function Sidebar() {
   return (
     <div className="sidebar">
       <nav>
@@ -74,5 +74,3 @@ function Sidebar() {
     </div>
   );
 }
-
-export default Sidebar;

@@ -4,10 +4,10 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import SubmitButton from "./SubmitButton";
 import "./CSS/SearchForm.css";
 
-function SearchForm(props) {
+export default function SearchForm(props) {
   const [datalistOptions, setDatalistOptions] = useState([]);
   const inputRef = useRef();
-  const pokemons = useContext(PokemonsContext);
+  const [pokemons] = useContext(PokemonsContext);
 
   //sets the datalist options when pokemons changes
   useEffect(() => {
@@ -51,5 +51,3 @@ function SearchForm(props) {
     </div>
   );
 }
-
-export default SearchForm;

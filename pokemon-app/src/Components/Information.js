@@ -3,8 +3,8 @@ import { PokemonsContext } from "../App";
 import React, { useContext } from "react";
 import "./CSS/Information.css";
 
-function Information(props) {
-  const pokemons = useContext(PokemonsContext);
+export default function Information(props) {
+  const [pokemons] = useContext(PokemonsContext);
 
   return (
     <div className="super-info-container">
@@ -50,5 +50,3 @@ function Information(props) {
     </div>
   );
 }
-
-export default Information;
