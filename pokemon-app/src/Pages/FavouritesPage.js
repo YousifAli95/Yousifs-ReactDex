@@ -2,68 +2,33 @@ import "./../App.css";
 import "./CSS/Favourites.css";
 import { PokemonsContext } from "../App";
 import { useEffect, useContext } from "react";
-import Star from "../Components/Star";
-import { Link } from "react-router-dom";
+import FavouritePokemonCard from "../Components/FavouritePokemonCard";
 
 export default function FavouritesPage() {
   const [pokemons, favouritePokemons, setFavouritePokemons] =
     useContext(PokemonsContext);
-  let favouriteElement;
 
   // Sort the favourite pokemons based on their number
   useEffect(() => {
     console.log(favouritePokemons);
+    const sortedFavouritePokemons = sortFavouritePokemons(
+      pokemons,
+      favouritePokemons
+    );
+    setFavouritePokemons(sortedFavouritePokemons);
+  }, [pokemons, favouritePokemons.length]);
+
+  function sortFavouritePokemons(pokemons, favouritePokemons) {
     if (Object.keys(pokemons).length > 0) {
       const newFavouritePokemons = [...favouritePokemons];
       newFavouritePokemons.sort((a, b) => {
-        return pokemons[a].Number.localeCompare(pokemons[b].Number);
+        return pokemons[a]?.Number.localeCompare(pokemons[b]?.Number);
       });
 
-      setFavouritePokemons(newFavouritePokemons);
+      return newFavouritePokemons;
     }
-  }, [pokemons, favouritePokemons.length]);
 
-  // Conditional rendering and mapping of favourite Pokemons to generate variable favouriteElement if there are valid data present.
-  if (favouritePokemons?.length > 0 && Object.keys(pokemons).length > 0) {
-    console.log(favouritePokemons.length);
-    favouriteElement = favouritePokemons.map((currentPokemon, key) => {
-      let pokemonNumber = pokemons[currentPokemon]?.Number.substring(1);
-      let image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemonNumber}.png`;
-      return (
-        <Link
-          className="ahref-card"
-          key={key}
-          to={`/?current-pokemon=${currentPokemon}`}
-        >
-          <div className="one-favourite">
-            <div className="poke-name">
-              <span id="Favourite-name" className="pokemon-name">
-                {pokemons[currentPokemon]?.Name}{" "}
-                {pokemons[currentPokemon]?.Number}
-              </span>
-              <span id="Favourite-type" className="pokemon-name">
-                {pokemons[currentPokemon].KindOfPokemon}
-              </span>
-            </div>
-
-            <div id="img-div-id" className="img-div">
-              <img
-                id="Favourite-img"
-                src={image}
-                alt={"A Pokemon"}
-                className={"pokemon-img"}
-              />
-              <Star
-                currentPokemon={currentPokemon}
-                setFavouritePokemons={setFavouritePokemons}
-                favouritePokemons={favouritePokemons}
-                extraClasses={"starleft-87 white-hover"}
-              />
-            </div>
-          </div>
-        </Link>
-      );
-    });
+    return favouritePokemons;
   }
 
   return (
@@ -77,7 +42,9 @@ export default function FavouritesPage() {
         )}
         <div className="all-favourites">
           {favouritePokemons?.length > 0 ? (
-            favouriteElement
+            favouritePokemons.map((pokemonName, key) => (
+              <FavouritePokemonCard key={key} pokemonName={pokemonName} />
+            ))
           ) : (
             <span id="info-span">
               You don't have any favourite Pokémons :(

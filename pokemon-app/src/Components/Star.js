@@ -14,22 +14,22 @@ export default function Star(props) {
     setIsYellow((prevState) => !prevState);
     if (isYellow) {
       let newFavouritePokemons = favouritePokemons?.filter(
-        (p) => p !== props.currentPokemon
+        (p) => p !== props.pokemonName
       );
       setFavouritePokemons(newFavouritePokemons);
     } else {
-      setFavouritePokemons((p) => [...p, props.currentPokemon]);
+      setFavouritePokemons((p) => [...p, props.pokemonName]);
     }
   }
 
   // Sets the star color of current pokemon
   useEffect(() => {
-    if (favouritePokemons?.includes(props.currentPokemon)) {
+    if (favouritePokemons?.includes(props.pokemonName)) {
       setIsYellow(true);
     } else {
       setIsYellow(false);
     }
-  }, [props.currentPokemon, favouritePokemons]);
+  }, [props.pokemonName, favouritePokemons]);
 
   // Updates the favoruites pokemon list on the browser's memory
   useEffect(() => {

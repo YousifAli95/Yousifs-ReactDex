@@ -23,7 +23,7 @@ export default function SubmitButton(props) {
     const currentNumber = props.currentNumber.current
       ? props.currentNumber.current
       : ConvertPokemonNumberToInt(
-          pokemons[currentPokemonFromUrlRef.current].Number
+          pokemons[currentPokemonFromUrlRef.current]?.Number
         );
 
     if (event.key === "ArrowRight") {
@@ -61,7 +61,7 @@ export default function SubmitButton(props) {
       }
       console.log("Removing EventListener");
     };
-  }, [pokemons]);
+  }, [pokemons, props.inputRef]);
 
   useEffect(() => {
     if (props.currentPokemon !== "" && pokemons[props.currentPokemon]) {

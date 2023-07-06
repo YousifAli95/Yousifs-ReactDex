@@ -9,6 +9,10 @@
   margin: 3rem 4rem;
 }
 
+.ahref-card{
+  transition: scale 200ms ease-in;
+}
+
 .ahref-card:hover{
   scale: 1.2;
 }

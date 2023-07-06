@@ -68,7 +68,7 @@ export default function SearchPage() {
             </span>
             <div className="img-div">
               <img src={imageURL} alt={"A Pokemon"} className="pokemon-img" />
-              <Star currentPokemon={currentPokemon} />
+              <Star pokemonName={currentPokemon} />
               <Information
                 currentPokemon={currentPokemon}
                 pokemons={pokemons}
