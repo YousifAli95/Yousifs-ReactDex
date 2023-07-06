@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import "./../App.css";
+import "./CSS/star.css";
 
 export default function Star(props) {
   const [isYellow, setIsYellow] = useState(false);

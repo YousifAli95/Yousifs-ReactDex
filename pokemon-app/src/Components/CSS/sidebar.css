@@ -1,18 +1,18 @@
 :root {
   --fill: rgb(225, 225, 225);
-  --sideBarWidth: 14rem;
+  --side-bar-width: 14rem;
 }
 
 .sidebar {
   height: 100vh;
-  width: var(--sideBarWidth);
+  width: var(--side-bar-width);
   background: #393982;
   position: fixed;
   transition: width 500ms ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 10;
+  z-index: 1;
 }
 
 #pokemonball {
@@ -60,7 +60,7 @@
 
 .sidebar-li {
   fill: rgb(225, 225, 225);
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
   display: flex;
   width: 100%;
   align-items: center;

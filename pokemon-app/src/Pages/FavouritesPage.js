@@ -60,7 +60,6 @@ export default function FavouritesPage({
 
   return (
     <>
-      <div className="dummy-sidebar"></div>
       <div className="main-container">
         {favouritePokemons.length > 0 && (
           <h1 className="h1-favourite">

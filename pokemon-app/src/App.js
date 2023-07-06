@@ -83,6 +83,7 @@ export default function App() {
     <div className="App">
       <PokemonsContext.Provider value={pokemons}>
         <Sidebar />
+        <div className="dummy-sidebar"></div>
         <div className="route-container">
           <Routes>
             <Route path="/" element={pokemonSearchPage} />

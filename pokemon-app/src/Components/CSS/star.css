@@ -1,0 +1,25 @@
+.star {
+    position: absolute;
+    width: 3rem;
+    left: 92%;
+    top: 1%;
+    cursor: pointer;
+}
+
+.star:active {
+    transform: translateY(0.3rem);
+}
+
+.star-is-yellow,
+.star-is-not-yellow:hover {
+    fill: yellow !important;
+}
+
+.star-is-not-yellow,
+.white-hover:hover {
+    fill: white !important;
+}
+
+.starleft-87 {
+    left: 87%;
+}
