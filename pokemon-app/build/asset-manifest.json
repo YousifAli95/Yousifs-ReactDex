@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/Yousifs-ReactDex/static/css/main.07e01083.css",
+    "main.js": "/Yousifs-ReactDex/static/js/main.55b5b274.js",
+    "static/media/PokemonList.txt": "/Yousifs-ReactDex/static/media/PokemonList.2758bc7a6742cf8d121d.txt",
+    "static/media/pokemonball.png": "/Yousifs-ReactDex/static/media/pokemonball.a835fb9ba399394db72d.png",
+    "static/media/Reddit.svg": "/Yousifs-ReactDex/static/media/Reddit.6fc8655026fd8f8ba501c1f7e10636fd.svg",
+    "static/media/Twitter.svg": "/Yousifs-ReactDex/static/media/Twitter.c8a4db4dcfc16d003536e1dd0b4409fe.svg",
+    "static/media/Home.svg": "/Yousifs-ReactDex/static/media/Home.85b5231ccf152e4323a73253b27a0876.svg",
+    "index.html": "/Yousifs-ReactDex/index.html",
+    "static/media/Youtube.svg": "/Yousifs-ReactDex/static/media/Youtube.833ab6da6a54d600b966b203dce6ae32.svg",
+    "static/media/Facebook.svg": "/Yousifs-ReactDex/static/media/Facebook.3033cf40b7f98a6cf8e7c0147ff974f8.svg",
+    "static/media/SideBarStar.svg": "/Yousifs-ReactDex/static/media/SideBarStar.d5b1dc9e424170fe67dea3bea3400bbe.svg",
+    "main.07e01083.css.map": "/Yousifs-ReactDex/static/css/main.07e01083.css.map",
+    "main.55b5b274.js.map": "/Yousifs-ReactDex/static/js/main.55b5b274.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.07e01083.css",
+    "static/js/main.55b5b274.js"
+  ]
+}
