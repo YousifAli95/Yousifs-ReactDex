@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./../App.css";
 
-function Star(props) {
+export default function Star(props) {
   const [isYellow, setIsYellow] = useState(false);
   const starRef = useRef();
 
@@ -25,7 +25,7 @@ function Star(props) {
     } else {
       setIsYellow(false);
     }
-  }, [props.currentPokemon]);
+  }, [props.currentPokemon, props.favouritePokemons]);
 
   // Updates the favoruites pokemon list on the browser's memory
   useEffect(() => {
@@ -33,16 +33,14 @@ function Star(props) {
       "favouritePokemons",
       JSON.stringify(props.favouritePokemons)
     );
-    console.log("Favourites list");
-    console.log(props.favouritePokemons);
   }, [props.favouritePokemons]);
 
+  // Adds the correct classes to the svg element when props changes.
   useEffect(() => {
     if (starRef.current) {
       const svgElement = starRef.current;
-
-      // Remove all existing classes from the SVG element
       svgElement.classList = "";
+
       if (props.extraClasses) {
         props.extraClasses.split(" ").forEach((extraClass) => {
           svgElement.classList.add(extraClass);
@@ -77,5 +75,3 @@ function Star(props) {
     </svg>
   );
 }
-
-export default Star;

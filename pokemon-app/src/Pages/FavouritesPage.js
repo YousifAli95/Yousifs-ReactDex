@@ -4,18 +4,26 @@ import { PokemonsContext } from "../App";
 import { useEffect, useContext } from "react";
 import Star from "../Components/Star";
 
-function FavouritesPage({ favouritePokemons, setFavouritePokemons }) {
+export default function FavouritesPage({
+  favouritePokemons,
+  setFavouritePokemons,
+}) {
   const pokemons = useContext(PokemonsContext);
-
-  useEffect(() => {
-    let sortedFavouritesPokemon = favouritePokemons.sort(function (a, b) {
-      return pokemons[a]["Number"].localeCompare(pokemons[b]["Number"]);
-    });
-    setFavouritePokemons(sortedFavouritesPokemon);
-  }, [pokemons, favouritePokemons]);
   let favouriteElement;
 
-  if (favouritePokemons.length > 0) {
+  // Sort the favourite pokemons based on their number
+  useEffect(() => {
+    console.log(favouritePokemons);
+    if (Object.keys(pokemons).length > 0) {
+      let sortedFavouritesPokemon = favouritePokemons.sort(function (a, b) {
+        return pokemons[a].Number.localeCompare(pokemons[b].Number);
+      });
+      setFavouritePokemons(sortedFavouritesPokemon);
+    }
+  }, [pokemons, favouritePokemons]);
+
+  // Conditional rendering and mapping of favourite Pokemons to generate variable favouriteElement if there are valid data present.
+  if (favouritePokemons.length > 0 && Object.keys(pokemons).length > 0) {
     console.log(favouritePokemons.length);
     favouriteElement = favouritePokemons.map((currentPokemon, key) => {
       let pokemonNumber = pokemons[currentPokemon].Number.substring(1);
@@ -51,22 +59,26 @@ function FavouritesPage({ favouritePokemons, setFavouritePokemons }) {
   }
 
   return (
-    <div>
-      {favouritePokemons.length > 0 && (
-        <h1 className="h1-favourite">Your favourite Pokémons</h1>
-      )}
-      <div className="all-favourites">
-        {favouritePokemons.length > 0 ? (
-          favouriteElement
-        ) : (
-          <span id="info-span">
-            You don't have any favourite Pokémons :(
-            <br /> When browsing Pokémons, press the star button to add Pokémons
-            to your favourites list.
-          </span>
+    <>
+      <div className="dummy-sidebar"></div>
+      <div className="main-container">
+        {favouritePokemons.length > 0 && (
+          <h1 className="h1-favourite">
+            You have {favouritePokemons.length} Favourite Pokémons
+          </h1>
         )}
+        <div className="all-favourites">
+          {favouritePokemons.length > 0 ? (
+            favouriteElement
+          ) : (
+            <span id="info-span">
+              You don't have any favourite Pokémons :(
+              <br /> When browsing Pokémons, press the star button to add
+              Pokémons to your favourites list.
+            </span>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
-export default FavouritesPage;

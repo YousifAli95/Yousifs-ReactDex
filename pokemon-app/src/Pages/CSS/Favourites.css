@@ -2,14 +2,13 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-left: calc(var(--sideBarWidth) + 6rem);
-  margin-top: 3rem;
+  justify-content: center
 }
 
 .one-favourite {
-  margin-left: 6rem;
-  margin-bottom: 4rem;
+  margin: 3rem 4rem;
 }
+
 /* .one-favourite:hover{
   scale: 1.2;
 } */
@@ -26,6 +25,7 @@
   display: inline-block;
   margin: 0;
 }
+
 #Favourite-type {
   font-size: 1.5rem;
   padding-bottom: 1rem;
@@ -40,12 +40,23 @@
 #info-span {
   font-size: 2.5rem;
 }
+
 .h1-favourite {
   margin-top: 2rem;
-  margin-left: calc(var(--sideBarWidth) + 3rem);
   font-size: 4rem;
   background: linear-gradient(to left, rgb(8, 8, 8), rgb(0, 0, 0));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
+}
+
+.dummy-sidebar {
+  width: var(--sideBarWidth); 
+  opacity: 50%;
+  position: relative;
+  background-color: white;
+}
+
+.main-container{
+  width: fit-content;
 }

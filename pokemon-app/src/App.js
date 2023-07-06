@@ -67,7 +67,6 @@ export default function App() {
 
   let pokemonSearchPage = (
     <SearchPage
-      pokemons={pokemons}
       setFavouritePokemons={setFavouritePokemons}
       favouritePokemons={favouritePokemons}
     />
@@ -77,7 +76,6 @@ export default function App() {
     <FavouritesPage
       favouritePokemons={favouritePokemons}
       setFavouritePokemons={setFavouritePokemons}
-      pokemons={pokemons}
     />
   );
 

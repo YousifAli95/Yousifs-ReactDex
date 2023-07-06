@@ -1,6 +1,6 @@
 :root {
   --fill: rgb(225, 225, 225);
-  --sideBarWidth: 12rem;
+  --sideBarWidth: 14rem;
 }
 
 .sidebar {
@@ -16,7 +16,7 @@
 }
 
 #pokemonball {
-  width: 60%;
+  width: 50%;
   transform: rotate(0);
   transition: transform 500ms ease;
 }
@@ -28,8 +28,8 @@
   margin-right: 1rem;
 }
 .sidebar:hover .li-svg {
-  margin-right: 2rem;
-  margin-left: 1rem;
+  margin-right: 3rem;
+  margin-left: 2rem;
 }
 .sidebar-li:hover {
   background: var(--DarkBlue);
@@ -73,6 +73,7 @@
 
 li:first-child {
   margin-top: 6rem;
+  margin-bottom: 2rem;
 }
 
 .li-svg {
