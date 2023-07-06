@@ -2,20 +2,19 @@ import { PokemonsContext } from "../App";
 import "./../App.css";
 import React, { useContext, useEffect, useRef } from "react";
 import { getPokemonNumber } from "../utils/pokemonUtils";
+import { useNavigate } from "react-router-dom";
 
-function SubmitButton(props) {
+export default function SubmitButton(props) {
   const inputValueRef = useRef(props.inputValue);
   const pokemons = useContext(PokemonsContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     inputValueRef.current = props.inputValue;
   }, [props.inputValue]);
 
-  const keyDownHandler = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      findPokemon();
-    } else if (event.key === "ArrowRight") {
+  const keyDownHandlerArrow = (event) => {
+    if (event.key === "ArrowRight") {
       if (props.currentNumber.current < 898) {
         ChangePokemonWithArrowKeys(1);
       }
@@ -25,18 +24,32 @@ function SubmitButton(props) {
       }
     }
   };
+
+  const keyDownHandlerInput = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      findPokemon();
+    }
+  };
+
   useEffect(() => {
-    document.addEventListener("keydown", keyDownHandler);
-    console.log("Adding EventListener");
+    document.addEventListener("keydown", keyDownHandlerArrow);
+    props.inputRef.current.addEventListener("keydown", keyDownHandlerInput);
 
     return () => {
-      document.removeEventListener("keydown", keyDownHandler);
+      document.removeEventListener("keydown", keyDownHandlerArrow);
+      if (props.inputRef.current) {
+        props.inputRef.current.removeEventListener(
+          "keydown",
+          keyDownHandlerInput
+        );
+      }
       console.log("Removing EventListener");
     };
   }, [pokemons]);
 
   useEffect(() => {
-    if (props.currentPokemon !== "") {
+    if (props.currentPokemon !== "" && pokemons[props.currentPokemon]) {
       document.body.style.background = getColor(
         pokemons[props.currentPokemon].Color
       );
@@ -65,6 +78,7 @@ function SubmitButton(props) {
       props.setInputValue("");
       let currentPokemon = pokemonNames[findIndex];
       props.setCurrentPokemon(currentPokemon);
+      navigate(`/?current-pokemon=${currentPokemon}`);
       props.currentNumber.current = parseInt(
         pokemons[currentPokemon]["Number"].replace("#", "")
       );
@@ -133,5 +147,3 @@ function SubmitButton(props) {
     ></input>
   );
 }
-
-export default SubmitButton;

@@ -9,9 +9,14 @@
   margin: 3rem 4rem;
 }
 
-/* .one-favourite:hover{
+.ahref-card:hover{
   scale: 1.2;
-} */
+}
+
+.ahref-card:hover img{
+  box-shadow: rgba(33, 5, 243, 0.5) 0 1rem 2rem;
+}
+
 .poke-name {
   display: flex;
   flex-direction: column;

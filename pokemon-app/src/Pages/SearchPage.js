@@ -4,19 +4,24 @@ import Arrows from "../Components/Arrows";
 import Star from "../Components/Star.js";
 import { PokemonsContext } from "../App";
 import React, { useEffect, useRef, useState, useContext } from "react";
+import { useLocation } from "react-router-dom";
 
 function SearchPage({ favouritePokemons, setFavouritePokemons }) {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
   const pokemons = useContext(PokemonsContext);
   const currentNumber = useRef("");
   const [inputValue, setInputValue] = useState("");
   const [showImage, setShowImage] = useState(false);
   const [imageURL, setImageURL] = useState("");
-  const [currentPokemon, setCurrentPokemon] = useState("");
+  const [currentPokemon, setCurrentPokemon] = useState(
+    params.get("current-pokemon")
+  );
   const STANDARD_BODY_COLOR = "#87CEEB";
 
   // Updates the image on the search page
   useEffect(() => {
-    if (currentPokemon !== "") {
+    if (currentPokemon !== "" && pokemons[currentPokemon]) {
       let pokemonNumber = pokemons[currentPokemon]["Number"].substring(1);
       setImageURL(
         `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemonNumber}.png`

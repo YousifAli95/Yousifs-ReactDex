@@ -1,11 +1,12 @@
 import "./../App.css";
 import { PokemonsContext } from "../App";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import SubmitButton from "./SubmitButton";
 import "./CSS/SearchForm.css";
 
 function SearchForm(props) {
   const [datalistOptions, setDatalistOptions] = useState([]);
+  const inputRef = useRef();
   const pokemons = useContext(PokemonsContext);
 
   //sets the datalist options when pokemons changes
@@ -25,6 +26,7 @@ function SearchForm(props) {
       <label htmlFor="pokemon-input">Select a Pokémon from the list</label>
       <div>
         <input
+          ref={inputRef}
           value={props.inputValue}
           onChange={DataListOnChange}
           autoComplete="off"
@@ -35,6 +37,7 @@ function SearchForm(props) {
 
         <datalist id="pokemon-datalist">{datalistOptions}</datalist>
         <SubmitButton
+          inputRef={inputRef}
           setImage={props.setImage}
           setInputValue={props.setInputValue}
           inputValue={props.inputValue}

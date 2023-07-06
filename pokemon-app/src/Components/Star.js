@@ -6,7 +6,8 @@ export default function Star(props) {
   const starRef = useRef();
 
   // Adds the pokemon to the favourites list. Removes the pokemon if it is already there. Also changes the star color accordingly
-  function changeColor() {
+  function changeColor(event) {
+    event.preventDefault(); //prevents a link redirection that would otherwise happen
     setIsYellow((prevState) => !prevState);
     if (isYellow) {
       let newFavouritePokemons = props.favouritePokemons.filter(

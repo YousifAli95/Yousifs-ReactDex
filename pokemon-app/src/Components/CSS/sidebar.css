@@ -69,6 +69,7 @@
   position: relative;
   cursor: pointer;
   padding: 0.5rem 0;
+  font-family: "Merienda One", cursive;
 }
 
 li:first-child {

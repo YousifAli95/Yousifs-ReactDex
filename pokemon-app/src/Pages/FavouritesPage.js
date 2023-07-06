@@ -3,6 +3,7 @@ import "./CSS/Favourites.css";
 import { PokemonsContext } from "../App";
 import { useEffect, useContext } from "react";
 import Star from "../Components/Star";
+import { Link } from "react-router-dom";
 
 export default function FavouritesPage({
   favouritePokemons,
@@ -29,31 +30,38 @@ export default function FavouritesPage({
       let pokemonNumber = pokemons[currentPokemon].Number.substring(1);
       let image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemonNumber}.png`;
       return (
-        <div className="one-favourite" key={key}>
-          <div className="poke-name">
-            <span id="Favourite-name" className="pokemon-name">
-              {pokemons[currentPokemon].Name} {pokemons[currentPokemon].Number}
-            </span>
-            <span id="Favourite-type" className="pokemon-name">
-              {pokemons[currentPokemon].KindOfPokemon}
-            </span>
-          </div>
+        <Link
+          className="ahref-card"
+          key={key}
+          to={`/?current-pokemon=${currentPokemon}`}
+        >
+          <div className="one-favourite">
+            <div className="poke-name">
+              <span id="Favourite-name" className="pokemon-name">
+                {pokemons[currentPokemon].Name}{" "}
+                {pokemons[currentPokemon].Number}
+              </span>
+              <span id="Favourite-type" className="pokemon-name">
+                {pokemons[currentPokemon].KindOfPokemon}
+              </span>
+            </div>
 
-          <div id="img-div-id" className="img-div">
-            <img
-              id="Favourite-img"
-              src={image}
-              alt={"A Pokemon"}
-              className={"pokemon-img"}
-            />
-            <Star
-              currentPokemon={currentPokemon}
-              setFavouritePokemons={setFavouritePokemons}
-              favouritePokemons={favouritePokemons}
-              extraClasses={"starleft-87 white-hover"}
-            />
+            <div id="img-div-id" className="img-div">
+              <img
+                id="Favourite-img"
+                src={image}
+                alt={"A Pokemon"}
+                className={"pokemon-img"}
+              />
+              <Star
+                currentPokemon={currentPokemon}
+                setFavouritePokemons={setFavouritePokemons}
+                favouritePokemons={favouritePokemons}
+                extraClasses={"starleft-87 white-hover"}
+              />
+            </div>
           </div>
-        </div>
+        </Link>
       );
     });
   }
@@ -63,7 +71,8 @@ export default function FavouritesPage({
       <div className="main-container">
         {favouritePokemons.length > 0 && (
           <h1 className="h1-favourite">
-            You have {favouritePokemons.length} Favourite Pokémons
+            You have {favouritePokemons.length} Favourite Pokémon
+            {favouritePokemons.length > 1 && "s"}
           </h1>
         )}
         <div className="all-favourites">
