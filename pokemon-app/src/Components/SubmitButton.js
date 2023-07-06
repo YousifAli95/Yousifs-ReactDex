@@ -15,10 +15,12 @@ export default function SubmitButton(props) {
 
   const keyDownHandlerArrow = (event) => {
     if (event.key === "ArrowRight") {
+      event.preventDefault();
       if (props.currentNumber.current < 898) {
         ChangePokemonWithArrowKeys(1);
       }
     } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
       if (props.currentNumber.current > 0) {
         ChangePokemonWithArrowKeys(-1);
       }
