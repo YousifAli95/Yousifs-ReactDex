@@ -13,13 +13,15 @@ export default function FavouritesPage() {
   // Sort the favourite pokemons based on their number
   useEffect(() => {
     console.log(favouritePokemons);
-    if (pokemons && Object.keys(pokemons).length > 0) {
-      let sortedFavouritesPokemon = favouritePokemons.sort(function (a, b) {
-        return pokemons[a]?.Number.localeCompare(pokemons[b]?.Number);
+    if (Object.keys(pokemons).length > 0) {
+      const newFavouritePokemons = [...favouritePokemons];
+      newFavouritePokemons.sort((a, b) => {
+        return pokemons[a].Number.localeCompare(pokemons[b].Number);
       });
-      setFavouritePokemons(sortedFavouritesPokemon);
+
+      setFavouritePokemons(newFavouritePokemons);
     }
-  }, [pokemons, favouritePokemons]);
+  }, [pokemons, favouritePokemons.length]);
 
   // Conditional rendering and mapping of favourite Pokemons to generate variable favouriteElement if there are valid data present.
   if (favouritePokemons?.length > 0 && Object.keys(pokemons).length > 0) {

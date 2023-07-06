@@ -1,5 +1,8 @@
 import "./CSS/arrows.css";
-import { getPokemonNumber } from "../utils/pokemonUtils";
+import {
+  ConvertPokemonNumberToInt,
+  convertPokemonNumberToString,
+} from "../utils/pokemonUtils";
 import { PokemonsContext } from "../App";
 import { useContext } from "react";
 
@@ -9,7 +12,8 @@ export default function Arrows(props) {
   // Will change the current shown pokemon to a new one which has plus/minus 1 diffrence in number
   function changePokemon(event) {
     const newNumber =
-      props.currentNumber.current + parseInt(event.target.dataset.delta);
+      ConvertPokemonNumberToInt(pokemons[props.currentPokemon].Number) +
+      parseInt(event.target.dataset.delta);
 
     if (newNumber > 0 && newNumber <= 898) {
       const newPokemon = getNewPokemon(newNumber);
@@ -37,7 +41,9 @@ export default function Arrows(props) {
   //Retrieves the name of a new Pokémon based on the provided newNumber
   function getNewPokemon(newNumber) {
     const [newPokemon] = Object.keys(pokemons).filter((pokemonName) => {
-      return pokemons[pokemonName].Number === getPokemonNumber(newNumber);
+      return (
+        pokemons[pokemonName].Number === convertPokemonNumberToString(newNumber)
+      );
     });
 
     return newPokemon;

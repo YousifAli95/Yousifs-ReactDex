@@ -22,12 +22,13 @@
 
 label {
   display: block;
-  margin: 1.5rem;
-  margin-top: 3rem;
-  font-family: 'Annie Use Your Telescope', 'Brush Script MT', cursive;
-  margin-left: 0rem;
-  font-size: 3rem;
+  margin: 3rem 0 1.5rem 0;
+  font-family: "Merienda One",
+    cursive;
+  font-size: 2.5rem;
   cursor: pointer;
+  color: var(--DarkBlue);
+  font-weight: 400;
 }
 
 .Fake-DataList {

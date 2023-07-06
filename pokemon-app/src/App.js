@@ -57,7 +57,7 @@ export default function App() {
         Type2: pokemon[8],
         Special: pokemon[9],
       };
-      if (pokemon[0] !== "") {
+      if (pokemon[0] !== "" && pokemon[0] !== "\r") {
         // Add the pokemon to the pokemons object, using the lowercase name as the key
         pokemons[pokemon[0].toLowerCase()] = tmpPokemon;
       }

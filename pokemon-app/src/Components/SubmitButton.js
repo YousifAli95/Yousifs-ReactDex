@@ -1,12 +1,18 @@
 import { PokemonsContext } from "../App";
 import "./../App.css";
 import React, { useContext, useEffect, useRef } from "react";
-import { getPokemonNumber } from "../utils/pokemonUtils";
-import { useNavigate } from "react-router-dom";
+import {
+  ConvertPokemonNumberToInt,
+  convertPokemonNumberToString,
+} from "../utils/pokemonUtils";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function SubmitButton(props) {
   const inputValueRef = useRef(props.inputValue);
   const [pokemons] = useContext(PokemonsContext);
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const currentPokemonFromUrlRef = useRef(params.get("current-pokemon"));
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,15 +20,21 @@ export default function SubmitButton(props) {
   }, [props.inputValue]);
 
   const keyDownHandlerArrow = (event) => {
+    const currentNumber = props.currentNumber.current
+      ? props.currentNumber.current
+      : ConvertPokemonNumberToInt(
+          pokemons[currentPokemonFromUrlRef.current].Number
+        );
+
     if (event.key === "ArrowRight") {
       event.preventDefault();
-      if (props.currentNumber.current < 898) {
-        ChangePokemonWithArrowKeys(1);
+      if (currentNumber < 898) {
+        ChangePokemonWithArrowKeys(1, currentNumber);
       }
     } else if (event.key === "ArrowLeft") {
       event.preventDefault();
-      if (props.currentNumber.current > 0) {
-        ChangePokemonWithArrowKeys(-1);
+      if (currentNumber > 0) {
+        ChangePokemonWithArrowKeys(-1, currentNumber);
       }
     }
   };
@@ -35,6 +47,7 @@ export default function SubmitButton(props) {
   };
 
   useEffect(() => {
+    console.log("Adding EventListener");
     document.addEventListener("keydown", keyDownHandlerArrow);
     props.inputRef.current.addEventListener("keydown", keyDownHandlerInput);
 
@@ -67,7 +80,7 @@ export default function SubmitButton(props) {
     console.log(pokemonNameOrNumber);
     let pokemonNumber = parseInt(pokemonNameOrNumber);
     if (pokemonNumber) {
-      pokemonNumber = getPokemonNumber(pokemonNumber);
+      pokemonNumber = convertPokemonNumberToString(pokemonNumber);
     }
     const pokemonNames = Object.keys(pokemons);
     let findIndex = pokemonNames?.findIndex((element) => {
@@ -80,7 +93,7 @@ export default function SubmitButton(props) {
       props.setInputValue("");
       let currentPokemon = pokemonNames[findIndex];
       props.setCurrentPokemon(currentPokemon);
-      navigate(`/?current-pokemon=${currentPokemon}`);
+      navigate(`/`);
       props.currentNumber.current = parseInt(
         pokemons[currentPokemon]["Number"].replace("#", "")
       );
@@ -97,6 +110,20 @@ export default function SubmitButton(props) {
           alert(`there is no Pokémon with the name ${pokemonNameOrNumber}!`);
         }
       }
+    }
+  }
+
+  function ChangePokemonWithArrowKeys(delta, currentNumber) {
+    console.log(currentNumber);
+    let newPokemon = Object.keys(pokemons).filter(
+      (name) =>
+        pokemons[name].Number ===
+        convertPokemonNumberToString(currentNumber + delta)
+    )[0];
+    if (newPokemon) {
+      const newNumber = ConvertPokemonNumberToInt(pokemons[newPokemon]?.Number);
+      props.currentNumber.current = newNumber;
+      props.setInputValue(newPokemon);
     }
   }
 
@@ -125,19 +152,6 @@ export default function SubmitButton(props) {
       default:
         return "#87CEEB";
     }
-  }
-
-  function ChangePokemonWithArrowKeys(delta) {
-    console.log(props.currentNumber.current);
-    let newPokemon = Object.keys(pokemons).filter(
-      (name) =>
-        pokemons[name].Number ===
-        getPokemonNumber(props.currentNumber.current + delta)
-    )[0];
-    let newNumber = pokemons[newPokemon]?.Number.replace("#", "");
-    newNumber = parseInt(newNumber);
-    props.currentNumber.current = newNumber;
-    props.setInputValue(newPokemon);
   }
 
   return (
