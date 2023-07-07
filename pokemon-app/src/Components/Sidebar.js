@@ -8,6 +8,8 @@ import { ReactComponent as YoutubeSVG } from "../SVGs/Youtube.svg";
 import { ReactComponent as RedditSVG } from "../SVGs/Reddit.svg";
 
 export default function Sidebar() {
+  const linkLocation = useLocation().pathname === "/" ? "/favourites" : "/";
+
   return (
     <div className="sidebar">
       <nav>
@@ -23,51 +25,47 @@ export default function Sidebar() {
           </Link>
           {useLocation().pathname === "/" ? (
             <li className="sidebar-li">
-              <SideBarStarSVG />
-              <Link to="/favourites" className="sidebar-span">
-                Favourite Pokemons
+              <Link className="sidebar-a-href" to="/favourites">
+                <SideBarStarSVG />
+                <span className="sidebar-span">Favourite Pokemons</span>
               </Link>
             </li>
           ) : (
             <li className="sidebar-li">
-              <HomeSVG />
-              <Link to="/" className="sidebar-span">
-                <p>Home</p>
+              <Link className="sidebar-a-href" to="/">
+                <HomeSVG />
+                <span className="sidebar-span">Home</span>
               </Link>
             </li>
           )}
           <li className="sidebar-li">
-            <TwitterSVG />
-            <a href="https://twitter.com/pokemon" className="sidebar-span">
-              Pokemon Twitter
-            </a>
+            <Link className="sidebar-a-href" to={linkLocation}>
+              <TwitterSVG />
+              <span className="sidebar-span">Pokemon Twitter</span>
+            </Link>
           </li>
           <li className="sidebar-li">
-            <FacebookSVG />
-            <a
-              href="https://web.facebook.com/Pokemon/?_rdc=1&_rdr"
-              className="sidebar-span"
-            >
-              Pokemon Facebook
-            </a>
+            <Link className="sidebar-a-href" to={linkLocation}>
+              <FacebookSVG />
+              <span className="sidebar-span">Pokemon Facebook</span>
+            </Link>
           </li>
           <li className="sidebar-li">
-            <YoutubeSVG />
-            <a
-              href="https://www.youtube.com/channel/UCFctpiB_Hnlk3ejWfHqSm6Q"
-              className="sidebar-span"
-            >
-              Pokemon Youtube
-            </a>
+            <Link className="sidebar-a-href" to={linkLocation}>
+              <YoutubeSVG />
+              <span className="sidebar-span">Pokemon Youtube</span>
+            </Link>
           </li>
           <li className="sidebar-li">
-            <RedditSVG />
-            <a
-              href="https://www.reddit.com/r/pokemon/"
-              className="sidebar-span"
-            >
-              Pokemon Reddit
-            </a>
+            <Link className="sidebar-a-href" to={linkLocation}>
+              <RedditSVG />
+              <span
+                href="https://www.reddit.com/r/pokemon/"
+                className="sidebar-span"
+              >
+                Pokemon Reddit
+              </span>
+            </Link>
           </li>
         </ul>
       </nav>
