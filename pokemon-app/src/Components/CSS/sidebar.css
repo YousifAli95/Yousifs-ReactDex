@@ -152,7 +152,7 @@ a:hover {
     height: -moz-available;
     /* Chrome, Edge, Opera */
     height: fill-available;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 
   .sidebar-li {
