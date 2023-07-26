@@ -19,6 +19,9 @@ export default function SubmitButton(props) {
   }, [props.inputValue]);
 
   const keyDownHandlerArrow = (event) => {
+    if (!currentPokemonFromUrlRef.current && !props.currentNumber.current) {
+      return;
+    }
     const currentNumber = props.currentNumber.current
       ? props.currentNumber.current
       : ConvertPokemonNumberToInt(
