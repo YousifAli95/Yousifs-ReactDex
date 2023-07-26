@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import {
   ConvertPokemonNumberToInt,
   convertPokemonNumberToString,
+  getColorAsHexadecimal,
 } from "../../../utils/pokemonUtils";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -22,6 +23,7 @@ export default function SubmitButton(props) {
     if (!currentPokemonFromUrlRef.current && !props.currentNumber.current) {
       return;
     }
+
     const currentNumber = props.currentNumber.current
       ? props.currentNumber.current
       : ConvertPokemonNumberToInt(
@@ -67,7 +69,7 @@ export default function SubmitButton(props) {
 
   useEffect(() => {
     if (props.currentPokemon !== "" && pokemons[props.currentPokemon]) {
-      document.body.style.background = getColor(
+      document.body.style.background = getColorAsHexadecimal(
         pokemons[props.currentPokemon].Color
       );
     }
@@ -126,33 +128,6 @@ export default function SubmitButton(props) {
       const newNumber = ConvertPokemonNumberToInt(pokemons[newPokemon]?.Number);
       props.currentNumber.current = newNumber;
       props.setInputValue(newPokemon);
-    }
-  }
-
-  function getColor(color) {
-    switch (color) {
-      case "Green":
-        return "#8FBC8F";
-      case "White":
-        return "#FFF5EE";
-      case "Brown":
-        return "#DEB887";
-      case "Red":
-        return "#CD5C5C";
-      case "Purple":
-        return "#DDA0DD";
-      case "Gray":
-        return "#C0C0C0";
-      case "Blue":
-        return "#87CEEB";
-      case "Pink":
-        return "#FFC0CB";
-      case "Yellow":
-        return "#F5DEB3";
-      case "Black":
-        return "#708090";
-      default:
-        return "#87CEEB";
     }
   }
 
