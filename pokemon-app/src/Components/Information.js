@@ -14,7 +14,7 @@ export default function Information(props) {
       <div className="info-container">
         <div className="info-div" id="type1">
           <img
-            src={require(`./../Types/${
+            src={require(`./../Assets/Types/${
               pokemons[props.currentPokemon]["Type1"]
             }.png`)}
             alt="Type1"
@@ -23,14 +23,14 @@ export default function Information(props) {
         <div className="info-div" id="type2">
           {pokemons[props.currentPokemon]["Type2"] === "N/A" ? (
             <img
-              src={require(`./../Types/${
+              src={require(`./../Assets/Types/${
                 pokemons[props.currentPokemon]["Type1"]
               }.png`)}
               alt="Type1"
             />
           ) : (
             <img
-              src={require(`./../Types/${
+              src={require(`./../Assets/Types/${
                 pokemons[props.currentPokemon]["Type2"]
               }.png`)}
               alt="Type2"

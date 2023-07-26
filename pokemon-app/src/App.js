@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import TextFileWithPokemonInfo from "./PokemonList.txt";
+import TextFileWithPokemonInfo from "./Assets/PokemonList.txt";
 import Sidebar from "./Components/Sidebar";
 import SearchPage from "./Pages/SearchPage";
 import { Route, Routes } from "react-router-dom";
