@@ -18,7 +18,7 @@ export default function Sidebar() {
             <li id="img-li" className="sidebar-li">
               <img
                 id="pokemonball"
-                src={require("./../Images/pokemonball.png")}
+                src={require("./../Assets/Images/pokemonball.png")}
                 alt=""
               />
             </li>
