@@ -1,11 +1,11 @@
 import "./CSS/sidebar.css";
 import { Link, useLocation } from "react-router-dom";
-import { ReactComponent as SideBarStarSVG } from "../SVGs/SideBarStar.svg";
-import { ReactComponent as HomeSVG } from "../SVGs/Home.svg";
-import { ReactComponent as TwitterSVG } from "../SVGs/Twitter.svg";
-import { ReactComponent as FacebookSVG } from "../SVGs/Facebook.svg";
-import { ReactComponent as YoutubeSVG } from "../SVGs/Youtube.svg";
-import { ReactComponent as RedditSVG } from "../SVGs/Reddit.svg";
+import { ReactComponent as SideBarStarSVG } from "../Assets//SVGs/SideBarStar.svg";
+import { ReactComponent as HomeSVG } from "../Assets//SVGs/Home.svg";
+import { ReactComponent as TwitterSVG } from "../Assets//SVGs/Twitter.svg";
+import { ReactComponent as FacebookSVG } from "../Assets//SVGs/Facebook.svg";
+import { ReactComponent as YoutubeSVG } from "../Assets//SVGs/Youtube.svg";
+import { ReactComponent as RedditSVG } from "../Assets//SVGs/Reddit.svg";
 
 export default function Sidebar() {
   const linkLocation = useLocation().pathname === "/" ? "/favourites" : "/";
