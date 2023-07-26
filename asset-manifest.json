@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Yousifs-ReactDex/static/css/main.88be1c3b.css",
-    "main.js": "/Yousifs-ReactDex/static/js/main.1542f90f.js",
+    "main.js": "/Yousifs-ReactDex/static/js/main.efb3aa01.js",
     "static/media/PokemonList.txt": "/Yousifs-ReactDex/static/media/PokemonList.2758bc7a6742cf8d121d.txt",
     "static/media/pokemonball.png": "/Yousifs-ReactDex/static/media/pokemonball.a835fb9ba399394db72d.png",
     "static/media/Reddit.svg": "/Yousifs-ReactDex/static/media/Reddit.6fc8655026fd8f8ba501c1f7e10636fd.svg",
@@ -12,10 +12,10 @@
     "static/media/Facebook.svg": "/Yousifs-ReactDex/static/media/Facebook.3033cf40b7f98a6cf8e7c0147ff974f8.svg",
     "static/media/SideBarStar.svg": "/Yousifs-ReactDex/static/media/SideBarStar.d5b1dc9e424170fe67dea3bea3400bbe.svg",
     "main.88be1c3b.css.map": "/Yousifs-ReactDex/static/css/main.88be1c3b.css.map",
-    "main.1542f90f.js.map": "/Yousifs-ReactDex/static/js/main.1542f90f.js.map"
+    "main.efb3aa01.js.map": "/Yousifs-ReactDex/static/js/main.efb3aa01.js.map"
   },
   "entrypoints": [
     "static/css/main.88be1c3b.css",
-    "static/js/main.1542f90f.js"
+    "static/js/main.efb3aa01.js"
   ]
 }
