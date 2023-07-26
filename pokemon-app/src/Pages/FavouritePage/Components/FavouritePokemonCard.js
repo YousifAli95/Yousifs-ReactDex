@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import Star from "./Star";
-import { PokemonsContext } from "../App";
+import Star from "../../../SharedComponents/Star";
+import { PokemonsContext } from "../../../App";
 
 export default function FavouritePokemonCard({ pokemonName }) {
   const [pokemons] = useContext(PokemonsContext);

@@ -1,0 +1,65 @@
+.all-favourites {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center
+}
+
+.one-favourite {
+  margin: 3rem 4rem;
+}
+
+.ahref-card{
+  transition: scale 200ms ease-in;
+}
+
+.ahref-card:hover{
+  scale: 1.2;
+}
+
+.ahref-card:hover img{
+  box-shadow: rgba(0, 0, 0, 0.5) 0 1rem 2rem;
+}
+
+.poke-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#Favourite-name {
+  font-size: 2rem;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+  margin: 0;
+}
+
+#Favourite-type {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+  display: inline-block;
+  margin: 0;
+}
+
+#img-div-id {
+  width: 20rem;
+}
+
+#info-span {
+  font-size: 2.5rem;
+}
+
+.h1-favourite {
+  margin-top: 2rem;
+  font-size: 4rem;
+  background: linear-gradient(to left, rgb(8, 8, 8), rgb(0, 0, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-family: 'Annie Use Your Telescope', 'Brush Script MT', cursive;
+}
+
+.main-container{
+  width: fit-content;
+}

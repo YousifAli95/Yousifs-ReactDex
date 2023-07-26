@@ -1,8 +1,7 @@
-import "./../App.css";
-import { PokemonsContext } from "../App";
+import { PokemonsContext } from "../../../App";
 import React, { useEffect, useState, useContext, useRef } from "react";
 import SubmitButton from "./SubmitButton";
-import "./CSS/SearchForm.css";
+import "../CSS/SearchForm.css";
 
 export default function SearchForm(props) {
   const [datalistOptions, setDatalistOptions] = useState([]);

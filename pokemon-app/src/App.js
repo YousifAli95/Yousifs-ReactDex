@@ -1,10 +1,10 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import TextFileWithPokemonInfo from "./Assets/PokemonList.txt";
-import Sidebar from "./Components/Sidebar";
-import SearchPage from "./Pages/SearchPage";
+import Sidebar from "./SharedComponents/Sidebar";
+import SearchPage from "./Pages/SearchPage/SearchPage";
 import { Route, Routes } from "react-router-dom";
-import FavouritesPage from "./Pages/FavouritesPage";
+import FavouritesPage from "./Pages/FavouritePage/FavouritesPage";
 
 export const PokemonsContext = React.createContext();
 

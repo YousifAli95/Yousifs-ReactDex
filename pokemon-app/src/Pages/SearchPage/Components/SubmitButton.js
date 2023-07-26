@@ -1,10 +1,9 @@
-import { PokemonsContext } from "../App";
-import "./../App.css";
+import { PokemonsContext } from "../../../App";
 import React, { useContext, useEffect, useRef } from "react";
 import {
   ConvertPokemonNumberToInt,
   convertPokemonNumberToString,
-} from "../utils/pokemonUtils";
+} from "../../../utils/pokemonUtils";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function SubmitButton(props) {

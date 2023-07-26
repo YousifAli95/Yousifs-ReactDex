@@ -1,8 +1,8 @@
-import SearchForm from "../Components/SearchForm";
-import Information from "../Components/Information";
-import Arrows from "../Components/Arrows";
-import Star from "../Components/Star.js";
-import { PokemonsContext } from "../App";
+import SearchForm from "./Components/SearchForm";
+import Information from "./Components/Information";
+import Arrows from "./Components/Arrows";
+import Star from "../../SharedComponents/Star.js";
+import { PokemonsContext } from "../../App";
 import React, { useEffect, useRef, useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 

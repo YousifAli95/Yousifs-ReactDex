@@ -1,8 +1,7 @@
-import "./../App.css";
 import "./CSS/Favourites.css";
-import { PokemonsContext } from "../App";
+import { PokemonsContext } from "../../App";
 import { useEffect, useContext } from "react";
-import FavouritePokemonCard from "../Components/FavouritePokemonCard";
+import FavouritePokemonCard from "./Components/FavouritePokemonCard";
 
 export default function FavouritesPage() {
   const [pokemons, favouritePokemons, setFavouritePokemons] =
