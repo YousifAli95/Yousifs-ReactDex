@@ -45,11 +45,15 @@ export default function FavouritesPage() {
               <FavouritePokemonCard key={key} pokemonName={pokemonName} />
             ))
           ) : (
-            <span id="info-span">
-              You don't have any favourite Pokémons :(
-              <br /> When browsing Pokémons, press the star button to add
-              Pokémons to your favourites list.
-            </span>
+            <>
+              <span className="info-span">
+                You don't have any favourite Pokémons :(
+              </span>
+              <span className="info-span">
+                When browsing Pokémons, press the star button to add Pokémons to
+                your favourites list.
+              </span>
+            </>
           )}
         </div>
       </div>
