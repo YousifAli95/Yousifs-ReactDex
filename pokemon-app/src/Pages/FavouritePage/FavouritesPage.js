@@ -4,7 +4,7 @@ import { useEffect, useContext } from "react";
 import FavouritePokemonCard from "./Components/FavouritePokemonCard";
 
 export default function FavouritesPage() {
-  const [pokemons, favouritePokemons, setFavouritePokemons] =
+  const { pokemons, favouritePokemons, setFavouritePokemons } =
     useContext(PokemonsContext);
 
   // Sort the favourite pokemons based on their number

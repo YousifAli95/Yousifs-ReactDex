@@ -4,7 +4,7 @@ import Star from "../../../SharedComponents/Star";
 import { PokemonsContext } from "../../../App";
 
 export default function FavouritePokemonCard({ pokemonName }) {
-  const [pokemons] = useContext(PokemonsContext);
+  const { pokemons } = useContext(PokemonsContext);
   const [pokemon, setPokemon] = useState();
   const [image, setImage] = useState("");
 

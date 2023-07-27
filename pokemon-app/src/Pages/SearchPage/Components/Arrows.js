@@ -7,7 +7,7 @@ import { PokemonsContext } from "../../../App";
 import { useContext } from "react";
 
 export default function Arrows(props) {
-  const [pokemons] = useContext(PokemonsContext);
+  const { pokemons } = useContext(PokemonsContext);
 
   // Will change the current shown pokemon to a new one which has plus/minus 1 diffrence in number
   function changePokemon(event) {

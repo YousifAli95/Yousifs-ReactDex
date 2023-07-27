@@ -9,7 +9,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 export default function SubmitButton(props) {
   const inputValueRef = useRef(props.inputValue);
-  const [pokemons] = useContext(PokemonsContext);
+  const { pokemons } = useContext(PokemonsContext);
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const currentPokemonFromUrlRef = useRef(params.get("current-pokemon"));

@@ -6,7 +6,7 @@ import "../CSS/SearchForm.css";
 export default function SearchForm(props) {
   const [datalistOptions, setDatalistOptions] = useState([]);
   const inputRef = useRef();
-  const [pokemons] = useContext(PokemonsContext);
+  const { pokemons } = useContext(PokemonsContext);
 
   //sets the datalist options when pokemons changes
   useEffect(() => {

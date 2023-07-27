@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 export default function SearchPage() {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const [pokemons] = useContext(PokemonsContext);
+  const { pokemons } = useContext(PokemonsContext);
   const currentNumber = useRef("");
   const [inputValue, setInputValue] = useState("");
   const [showImage, setShowImage] = useState(false);

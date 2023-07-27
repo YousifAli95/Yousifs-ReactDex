@@ -3,8 +3,7 @@ import React, { useContext } from "react";
 import "../CSS/Information.css";
 
 export default function Information(props) {
-  const [pokemons] = useContext(PokemonsContext);
-  const typesPath = "../../../Assets/Types/";
+  const { pokemons } = useContext(PokemonsContext);
 
   return (
     <div className="super-info-container">

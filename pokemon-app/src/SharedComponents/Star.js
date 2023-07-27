@@ -4,8 +4,9 @@ import { PokemonsContext } from "../App";
 
 export default function Star(props) {
   const [isYellow, setIsYellow] = useState(false);
-  const [, favouritePokemons, setFavouritePokemons] =
+  const { favouritePokemons, setFavouritePokemons } =
     useContext(PokemonsContext);
+
   const starRef = useRef();
 
   // Adds the pokemon to the favourites list. Removes the pokemon if it is already there. Also changes the star color accordingly
