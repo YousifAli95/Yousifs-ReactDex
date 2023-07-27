@@ -1,6 +1,6 @@
 import SearchForm from "./Components/SearchForm";
 import Information from "./Components/Information";
-import Arrows from "./Components/Arrows";
+import NavigationButtons from "./Components/NavigationButtons";
 import Star from "../../SharedComponents/Star.js";
 import { PokemonsContext } from "../../App";
 import React, { useEffect, useRef, useState, useContext } from "react";
@@ -50,7 +50,7 @@ export default function SearchPage() {
       </div>
 
       <div className="arrows-info">
-        <Arrows
+        <NavigationButtons
           currentPokemon={currentPokemon}
           setCurrentPokemon={setCurrentPokemon}
           setInputValue={setInputValue}

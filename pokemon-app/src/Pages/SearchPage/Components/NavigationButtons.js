@@ -9,7 +9,7 @@ import { useContext, useRef, useEffect } from "react";
 const MIN_POKEMON_NUMBER = 1;
 const MAX_POKEMON_NUMBER = 898;
 
-export default function Arrows(props) {
+export default function NavigationButtons(props) {
   const { pokemons } = useContext(PokemonsContext);
   const leftArrowButton = useRef();
   const rightArrowButton = useRef();
