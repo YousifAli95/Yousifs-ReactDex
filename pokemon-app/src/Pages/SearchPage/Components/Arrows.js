@@ -8,6 +8,17 @@ import { useContext } from "react";
 
 export default function Arrows(props) {
   const { pokemons } = useContext(PokemonsContext);
+  const MIN_POKEMON_NUMBER = 1;
+  const MAX_POKEMON_NUMBER = 898;
+
+  function updatePokemon(newNumber) {
+    const newPokemon = getNewPokemon(newNumber);
+    console.log("UpdatePokemon():", newNumber, newPokemon);
+    props.setInputValue(newPokemon);
+
+    //This will trigger an useEffect that will trigger the changing of current shown pokemon
+    props.currentNumber.current = newNumber;
+  }
 
   // Will change the current shown pokemon to a new one which has plus/minus 1 diffrence in number
   function changePokemon(event) {
@@ -15,13 +26,8 @@ export default function Arrows(props) {
       ConvertPokemonNumberToInt(pokemons[props.currentPokemon].Number) +
       parseInt(event.target.dataset.delta);
 
-    if (newNumber > 0 && newNumber <= 898) {
-      const newPokemon = getNewPokemon(newNumber);
-      props.setInputValue(newPokemon);
-      //This will trigger an useEffect that will trigger the changing of current shown pokemon
-      props.currentNumber.current = newNumber;
-
-      console.log("changePokemon();", newNumber, newPokemon);
+    if (newNumber >= MIN_POKEMON_NUMBER && newNumber <= MAX_POKEMON_NUMBER) {
+      updatePokemon(newNumber);
     } else {
       alert("There are only Pokémon with numbers 1-898");
     }
@@ -29,13 +35,11 @@ export default function Arrows(props) {
 
   // Will change the current shown pokemon to a new random pokemon
   function randomPokemon() {
-    const randomNumber = Math.floor(Math.random() * (898 - 1)) + 1;
-    const newPokemon = getNewPokemon(randomNumber);
-    props.setInputValue(newPokemon);
-    //This will trigger an useEffect that will trigger the changing of current shown pokemon
-    props.currentNumber.current = randomNumber;
+    const randomNumber =
+      Math.floor(Math.random() * (MAX_POKEMON_NUMBER - MIN_POKEMON_NUMBER)) +
+      MIN_POKEMON_NUMBER;
 
-    console.log("RandomPokemon():", randomNumber, newPokemon);
+    updatePokemon(randomNumber);
   }
 
   //Retrieves the name of a new Pokémon based on the provided newNumber
