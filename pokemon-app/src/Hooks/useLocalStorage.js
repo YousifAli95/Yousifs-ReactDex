@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
  *
  * @returns {Array} A state variable and a setter function, similar to `useState`.
  */
-export function useLocalStorage(key, defaultValue) {
+export default function useLocalStorage(key, defaultValue) {
   const [state, setState] = useState(() => {
     try {
       const storedValue = window.localStorage.getItem(key);

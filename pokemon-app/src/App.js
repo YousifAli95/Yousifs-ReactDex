@@ -5,8 +5,8 @@ import Sidebar from "./SharedComponents/Sidebar";
 import SearchPage from "./Pages/SearchPage/SearchPage";
 import { Route, Routes } from "react-router-dom";
 import FavouritesPage from "./Pages/FavouritePage/FavouritesPage";
-import { useLocalStorage } from "./Hooks/useLocalStorage";
-import { useFetchPokemons } from "./Hooks/useFetchPokemons";
+import useLocalStorage from "./Hooks/useLocalStorage";
+import useFetchPokemons from "./Hooks/useFetchPokemons";
 
 export const PokemonsContext = React.createContext();
 

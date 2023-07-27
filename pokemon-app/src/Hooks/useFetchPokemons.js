@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
  * @param {string} TextFileWithPokemonInfo - The URL of the text file containing the Pokemon data
  * @return {object} The parsed Pokemon data as an object
  */
-export function useFetchPokemons(TextFileWithPokemonInfo) {
+export default function useFetchPokemons(TextFileWithPokemonInfo) {
   const [pokemons, setPokemons] = useState({});
 
   useEffect(() => {
