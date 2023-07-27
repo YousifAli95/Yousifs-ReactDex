@@ -4,12 +4,38 @@ import {
   convertPokemonNumberToString,
 } from "../../../utils/pokemonUtils";
 import { PokemonsContext } from "../../../App";
-import { useContext } from "react";
+import { useContext, useRef, useEffect } from "react";
+
+const MIN_POKEMON_NUMBER = 1;
+const MAX_POKEMON_NUMBER = 898;
 
 export default function Arrows(props) {
   const { pokemons } = useContext(PokemonsContext);
-  const MIN_POKEMON_NUMBER = 1;
-  const MAX_POKEMON_NUMBER = 898;
+  const leftArrowButton = useRef();
+  const rightArrowButton = useRef();
+
+  const keyDownHandlerArrow = (event) => {
+    if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+      event.preventDefault();
+      if (event.key === "ArrowRight") {
+        rightArrowButton.current.click();
+      } else {
+        leftArrowButton.current.click();
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (props.showImage) {
+      console.log("Adding EventListener");
+      document.addEventListener("keydown", keyDownHandlerArrow);
+
+      return () => {
+        document.removeEventListener("keydown", keyDownHandlerArrow);
+        console.log("Removing EventListener");
+      };
+    }
+  }, [pokemons, props.showImage]);
 
   function updatePokemon(newNumber) {
     const newPokemon = getNewPokemon(newNumber);
@@ -64,6 +90,7 @@ export default function Arrows(props) {
             className="arrows"
             data-delta={-1}
             onClick={changePokemon}
+            ref={leftArrowButton}
           />
           <button onClick={randomPokemon} className="Random-Button">
             Random Pokemon
@@ -75,6 +102,7 @@ export default function Arrows(props) {
             className="arrows"
             data-delta={1}
             onClick={changePokemon}
+            ref={rightArrowButton}
           />
         </>
       ) : (
