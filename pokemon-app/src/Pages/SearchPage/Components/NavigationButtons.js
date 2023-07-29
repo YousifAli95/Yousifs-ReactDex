@@ -7,10 +7,9 @@ import { PokemonsContext } from "../../../App";
 import { useContext, useRef, useEffect } from "react";
 
 const MIN_POKEMON_NUMBER = 1;
-const MAX_POKEMON_NUMBER = 898;
 
 export default function NavigationButtons(props) {
-  const { pokemons } = useContext(PokemonsContext);
+  const { MAX_POKEMON_NUMBER, pokemons } = useContext(PokemonsContext);
   const leftArrowButton = useRef();
   const rightArrowButton = useRef();
 
@@ -49,13 +48,12 @@ export default function NavigationButtons(props) {
   // Will change the current shown pokemon to a new one which has plus/minus 1 diffrence in number
   function changePokemon(event) {
     const newNumber =
-      ConvertPokemonNumberToInt(pokemons[props.currentPokemon].Number) +
-      parseInt(event.target.dataset.delta);
+      pokemons[props.currentPokemon] + parseInt(event.target.dataset.delta);
 
     if (newNumber >= MIN_POKEMON_NUMBER && newNumber <= MAX_POKEMON_NUMBER) {
       updatePokemon(newNumber);
     } else {
-      alert("There are only Pokémon with numbers 1-898");
+      alert(`There are only Pokémon with numbers 1-${MAX_POKEMON_NUMBER}`);
     }
   }
 
@@ -71,9 +69,7 @@ export default function NavigationButtons(props) {
   //Retrieves the name of a new Pokémon based on the provided newNumber
   function getNewPokemon(newNumber) {
     const [newPokemon] = Object.keys(pokemons).filter((pokemonName) => {
-      return (
-        pokemons[pokemonName].Number === convertPokemonNumberToString(newNumber)
-      );
+      return pokemons[pokemonName] === newNumber;
     });
 
     return newPokemon;

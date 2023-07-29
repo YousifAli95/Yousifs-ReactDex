@@ -1,34 +1,15 @@
 import "./CSS/Favourites.css";
 import { PokemonsContext } from "../../App";
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import FavouritePokemonCard from "./Components/FavouritePokemonCard";
+import { useSortFavouritePokemons } from "./Hooks/useSortFavouritePokemons";
 
 export default function FavouritesPage() {
-  const { pokemons, favouritePokemons, setFavouritePokemons } =
-    useContext(PokemonsContext);
-
-  // Sort the favourite pokemons based on their number
-  useEffect(() => {
-    console.log(favouritePokemons);
-    const sortedFavouritePokemons = sortFavouritePokemons(
-      pokemons,
-      favouritePokemons
-    );
-    setFavouritePokemons(sortedFavouritePokemons);
-  }, [pokemons, favouritePokemons.length]);
-
-  function sortFavouritePokemons(pokemons, favouritePokemons) {
-    if (Object.keys(pokemons).length > 0) {
-      const newFavouritePokemons = [...favouritePokemons];
-      newFavouritePokemons.sort((a, b) => {
-        return pokemons[a]?.Number.localeCompare(pokemons[b]?.Number);
-      });
-
-      return newFavouritePokemons;
-    }
-
-    return favouritePokemons;
-  }
+  const { pokemons, favouritePokemons } = useContext(PokemonsContext);
+  const sortedFavouritePokemons = useSortFavouritePokemons(
+    pokemons,
+    favouritePokemons
+  );
 
   return (
     <>
@@ -40,8 +21,8 @@ export default function FavouritesPage() {
           </h1>
         )}
         <div className="all-favourites">
-          {favouritePokemons?.length > 0 ? (
-            favouritePokemons.map((pokemonName, key) => (
+          {sortedFavouritePokemons?.length > 0 ? (
+            sortedFavouritePokemons.map((pokemonName, key) => (
               <FavouritePokemonCard key={key} pokemonName={pokemonName} />
             ))
           ) : (

@@ -1,6 +1,5 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { getColorAsHexadecimal } from "../../../utils/pokemonUtils";
-import { PokemonsContext } from "../../../App";
 
 /**
  * A custom hook that changes the background color of the body based on the current Pokemon.
@@ -9,14 +8,13 @@ import { PokemonsContext } from "../../../App";
  *
  * @param {string} currentPokemon - The name of the current Pokemon
  */
-export default function useChangeBackgroundColor(currentPokemon) {
-  const { pokemons } = useContext(PokemonsContext);
-
+export default function useChangeBackgroundColor(pokemonObject) {
   useEffect(() => {
-    if (currentPokemon !== "" && pokemons[currentPokemon]) {
+    if (pokemonObject) {
+      console.log(pokemonObject.color.name);
       document.body.style.background = getColorAsHexadecimal(
-        pokemons[currentPokemon].Color
+        pokemonObject.color.name
       );
     }
-  }, [currentPokemon, pokemons]);
+  }, [pokemonObject]);
 }

@@ -28,16 +28,9 @@
   align-items: center;
 }
 
-#Favourite-name {
+.favourite-name {
   font-size: 2rem;
   padding-bottom: 0.5rem;
-  display: inline-block;
-  margin: 0;
-}
-
-#Favourite-type {
-  font-size: 1.5rem;
-  padding-bottom: 1rem;
   display: inline-block;
   margin: 0;
 }

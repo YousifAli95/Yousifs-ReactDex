@@ -3,32 +3,53 @@ export function convertPokemonNumberToString(number) {
   return "#" + String(number).padStart(3, "0");
 }
 
-// Returns an int representation of a string in this format "#DDD"
+// Returns an int representation of a string in this format "#DDD".
 export function ConvertPokemonNumberToInt(numberAsString) {
   return parseInt(numberAsString.replace("#", ""));
 }
 
+// Converts a string of format "generation-vii" to "Generation VII".
+export function formatGeneration(generationString) {
+  let [generation, romanNumber] = generationString.split("-");
+  generation =
+    generation.charAt(0).toUpperCase() + generation.slice(1).toLowerCase();
+  romanNumber = romanNumber.toUpperCase();
+
+  return `${generation} ${romanNumber}`;
+}
+
+// Capitalizes the first letter of a string.
+export function formatPokemonName(pokemonName) {
+  return pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
+}
+
+//Converts an "number" to a "width" long string that is zero padded. 7 Becomes 007 if "width" is 3 for example.
+export function padWithLeadingZeros(number, width) {
+  return number.toString().padStart(width, "0");
+}
+
+// Returns the hexadecimalformat of a color.
 export function getColorAsHexadecimal(color) {
   switch (color) {
-    case "Green":
+    case "green":
       return "#8FBC8F";
-    case "White":
+    case "white":
       return "#FFF5EE";
-    case "Brown":
+    case "brown":
       return "#DEB887";
-    case "Red":
+    case "red":
       return "#CD5C5C";
-    case "Purple":
+    case "purple":
       return "#DDA0DD";
-    case "Gray":
+    case "gray":
       return "#C0C0C0";
-    case "Blue":
+    case "blue":
       return "#87CEEB";
-    case "Pink":
+    case "pink":
       return "#FFC0CB";
-    case "Yellow":
+    case "yellow":
       return "#F5DEB3";
-    case "Black":
+    case "black":
       return "#708090";
     default:
       return "#87CEEB";

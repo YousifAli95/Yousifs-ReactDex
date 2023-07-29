@@ -1,48 +1,36 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { formatPokemonName } from "../utils/pokemonUtils";
 
 /**
- * A custom hook that fetches Pokemon data from a given text file,
- * parses the data into a useful format, and provides the data as state.
+ * A custom hook that fetches a list of Pokemons and returns an object mapping
+ * the formatted Pokemon names to their respective pokedex numbers.
  *
- * @param {string} TextFileWithPokemonInfo - The URL of the text file containing the Pokemon data
- * @return {object} The parsed Pokemon data as an object
+ * @param {number} MAX_POKEMON_NUMBER - The maximum number of Pokemons to fetch.
+ * @returns {object} - An object mapping formatted Pokemon names to their
+ * pokedex numbers.
  */
-export default function useFetchPokemons(TextFileWithPokemonInfo) {
-  const [pokemons, setPokemons] = useState({});
+
+export default function useFetchPokemons(MAX_POKEMON_NUMBER) {
+  const [pokemonsObject, setPokemonsObject] = useState({});
 
   useEffect(() => {
-    fetch(TextFileWithPokemonInfo)
-      .then((r) => r.text())
-      .then((text) => {
-        const parsedPokemons = parsePokemonString(text);
-        setPokemons(parsedPokemons);
+    fetch(
+      `https://pokeapi.co/api/v2/pokemon?limit=${MAX_POKEMON_NUMBER}&offset=0`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        const newObject = Object.keys(json.results).reduce((result, index) => {
+          const { name } = json.results[index];
+
+          result[formatPokemonName(name)] = parseInt(index) + 1;
+          return result;
+        }, {});
+        setPokemonsObject(newObject);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
-  }, [TextFileWithPokemonInfo]);
+  }, [MAX_POKEMON_NUMBER]);
 
-  return pokemons;
-}
-
-function parsePokemonString(pokemonString) {
-  let pokemons = {};
-  let pokemonArray = pokemonString.split("\n");
-
-  for (let i = 0; i < pokemonArray.length; i++) {
-    let pokemon = pokemonArray[i].split(", ");
-    let tmpPokemon = {
-      Name: pokemon[0],
-      Number: pokemon[1],
-      Generation: pokemon[2],
-      Height: pokemon[3],
-      Weight: pokemon[4],
-      KindOfPokemon: pokemon[5],
-      Color: pokemon[6],
-      Type1: pokemon[7],
-      Type2: pokemon[8],
-      Special: pokemon[9],
-    };
-    if (pokemon[0] !== "" && pokemon[0] !== "\r") {
-      pokemons[pokemon[0].toLowerCase()] = tmpPokemon;
-    }
-  }
-  return pokemons;
+  return pokemonsObject;
 }

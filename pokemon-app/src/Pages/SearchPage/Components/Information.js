@@ -1,51 +1,55 @@
-import { PokemonsContext } from "../../../App";
-import React, { useContext } from "react";
+import { formatGeneration } from "../../../utils/pokemonUtils";
 import "../CSS/Information.css";
+import useFetchPokemonInformation from "../Hooks/useFetchPokemonInformation";
+import useChangeBackgroundColor from "../Hooks/useChangeBackgroundColor";
+import { useContext } from "react";
+import { PokemonsContext } from "../../../App";
 
-export default function Information(props) {
+export default function Information({ currentPokemon }) {
   const { pokemons } = useContext(PokemonsContext);
+  const pokemonObject = useFetchPokemonInformation(currentPokemon, pokemons);
+
+  useChangeBackgroundColor(pokemonObject);
 
   return (
-    <div className="super-info-container">
-      <div className="info-div" id="kindOfPokemon">
-        <span>{pokemons[props.currentPokemon]["KindOfPokemon"]}</span>
-      </div>
-      <div className="info-container">
-        <div className="info-div" id="type1">
-          <img
-            src={require(`./../../../Assets/Types/${
-              pokemons[props.currentPokemon]["Type1"]
-            }.png`)}
-            alt="Type1"
-          />
+    <>
+      {pokemonObject && (
+        <div className="super-info-container">
+          <div className="info-div" id="kindOfPokemon">
+            <span>{pokemonObject.category}</span>
+          </div>
+          <div className="info-container">
+            <div className="info-div" id="type1">
+              <img
+                src={require(`../../../Assets/Types/${pokemonObject.types[0]}.png`)}
+                alt="Type1"
+              />
+            </div>
+            <div className="info-div" id="type2">
+              {pokemonObject?.types.length > 1 ? (
+                <img
+                  src={require(`../../../Assets/Types/${pokemonObject.types[1]}.png`)}
+                  alt="Type1"
+                />
+              ) : (
+                <img
+                  src={require(`../../../Assets/Types/${pokemonObject.types[0]}.png`)}
+                  alt="Type2"
+                />
+              )}
+            </div>
+            <div className="info-div" id="Height">
+              <span>{pokemonObject.height} m</span>
+            </div>
+            <div className="info-div" id="Weight">
+              <span>{pokemonObject.weight} kg</span>
+            </div>
+          </div>
+          <div className="info-div" id="generation">
+            <span>{formatGeneration(pokemonObject.generation.name)}</span>
+          </div>
         </div>
-        <div className="info-div" id="type2">
-          {pokemons[props.currentPokemon]["Type2"] === "N/A" ? (
-            <img
-              src={require(`./../../../Assets/Types/${
-                pokemons[props.currentPokemon]["Type1"]
-              }.png`)}
-              alt="Type1"
-            />
-          ) : (
-            <img
-              src={require(`./../../../Assets/Types/${
-                pokemons[props.currentPokemon]["Type2"]
-              }.png`)}
-              alt="Type2"
-            />
-          )}
-        </div>
-        <div className="info-div" id="Height">
-          <span>{pokemons[props.currentPokemon]["Height"]}</span>
-        </div>
-        <div className="info-div" id="Weight">
-          <span>{pokemons[props.currentPokemon]["Weight"]}</span>
-        </div>
-      </div>
-      <div className="info-div" id="generation">
-        <span>{pokemons[props.currentPokemon]["Generation"]}</span>
-      </div>
-    </div>
+      )}
+    </>
   );
 }

@@ -2,17 +2,19 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Star from "../../../SharedComponents/Star";
 import { PokemonsContext } from "../../../App";
+import {
+  convertPokemonNumberToString,
+  padWithLeadingZeros,
+} from "../../../utils/pokemonUtils";
 
 export default function FavouritePokemonCard({ pokemonName }) {
   const { pokemons } = useContext(PokemonsContext);
-  const [pokemon, setPokemon] = useState();
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    setPokemon(pokemons[pokemonName]);
-    const number = pokemons[pokemonName]?.Number.substring(1);
+    const pokeDexNumber = padWithLeadingZeros(pokemons[pokemonName], 3);
     setImage(
-      `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${number}.png`
+      `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokeDexNumber}.png`
     );
   }, [pokemons, pokemonName]);
 
@@ -20,16 +22,15 @@ export default function FavouritePokemonCard({ pokemonName }) {
     <Link className="ahref-card" to={`/?current-pokemon=${pokemonName}`}>
       <div className="one-favourite">
         <div className="poke-name">
-          <span id="Favourite-name" className="pokemon-name">
-            {pokemon?.Name} {pokemon?.Number}
-          </span>
-          <span id="Favourite-type" className="pokemon-name">
-            {pokemon?.KindOfPokemon}
+          <span className="favourite-name pokemon-name">
+            {`${pokemonName} ${convertPokemonNumberToString(
+              pokemons[pokemonName]
+            )}`}
           </span>
         </div>
         <div id="img-div-id" className="img-div">
           <img
-            id="Favourite-img"
+            id="favourite-img"
             src={image}
             alt="A Pokemon"
             className="pokemon-img"

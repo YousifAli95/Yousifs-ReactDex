@@ -1,6 +1,5 @@
 import "./App.css";
 import React from "react";
-import TextFileWithPokemonInfo from "./Assets/PokemonList.txt";
 import Sidebar from "./SharedComponents/Sidebar";
 import SearchPage from "./Pages/SearchPage/SearchPage";
 import { Route, Routes } from "react-router-dom";
@@ -9,9 +8,10 @@ import useLocalStorage from "./Hooks/useLocalStorage";
 import useFetchPokemons from "./Hooks/useFetchPokemons";
 
 export const PokemonsContext = React.createContext();
+const MAX_POKEMON_NUMBER = 1010;
 
 export default function App() {
-  const pokemons = useFetchPokemons(TextFileWithPokemonInfo);
+  const pokemons = useFetchPokemons(MAX_POKEMON_NUMBER);
   const [favouritePokemons, setFavouritePokemons] = useLocalStorage(
     "favouritePokemons",
     []
@@ -20,7 +20,12 @@ export default function App() {
   return (
     <div className="App">
       <PokemonsContext.Provider
-        value={{ pokemons, favouritePokemons, setFavouritePokemons }}
+        value={{
+          pokemons,
+          favouritePokemons,
+          setFavouritePokemons,
+          MAX_POKEMON_NUMBER,
+        }}
       >
         <Sidebar />
         <div className="dummy-sidebar"></div>

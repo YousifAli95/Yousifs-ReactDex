@@ -1,26 +1,19 @@
 import { PokemonsContext } from "../../../App";
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  convertPokemonNumberToString,
-  ConvertPokemonNumberToInt,
-} from "../../../utils/pokemonUtils";
 import "../CSS/SearchForm.css";
-import useChangeBackgroundColor from "../Hooks/useChangeBackgroundColor";
-
-const MAX_POKEMON_NUMBER = 898;
 
 export default function SearchForm(props) {
-  useChangeBackgroundColor(props.currentPokemon);
   const [datalistOptions, setDatalistOptions] = useState([]);
   const inputRef = useRef();
-  const { pokemons } = useContext(PokemonsContext);
+  const { pokemons, MAX_POKEMON_NUMBER } = useContext(PokemonsContext);
   const navigate = useNavigate();
 
   //sets the datalist options when the pokemons variable changes
   useEffect(() => {
+    console.log(pokemons);
     const optionsMap = Object.keys(pokemons).map((name, index) => (
-      <option key={index} value={pokemons[name].Name} />
+      <option key={index} value={name} />
     ));
     setDatalistOptions(optionsMap);
   }, [pokemons]);
@@ -41,14 +34,10 @@ export default function SearchForm(props) {
   function getIndexOfNewPokemon(pokemonNames) {
     let pokemonNumber = parseInt(inputRef.current.value);
 
-    if (pokemonNumber) {
-      pokemonNumber = convertPokemonNumberToString(pokemonNumber);
-    }
-
-    let findIndex = pokemonNames?.findIndex((element) => {
+    let findIndex = pokemonNames?.findIndex((name) => {
       return (
-        element.toLowerCase() === inputRef.current.value?.toLowerCase() ||
-        pokemons[element]?.Number === pokemonNumber
+        name.toLowerCase() === inputRef.current.value?.toLowerCase() ||
+        pokemons[name] === pokemonNumber
       );
     });
     return findIndex;
@@ -59,15 +48,15 @@ export default function SearchForm(props) {
     props.setInputValue("");
 
     let currentPokemon = pokemonNames[findIndex];
+    console.log(currentPokemon);
     props.setCurrentPokemon(currentPokemon);
     navigate(`/`);
+    console.log(pokemons[currentPokemon]);
 
-    props.currentNumber.current = ConvertPokemonNumberToInt(
-      pokemons[currentPokemon].Number
-    );
+    props.currentNumber.current = pokemons[currentPokemon];
   }
 
-  // Shows a new pokemon when the variable current number has been updated.
+  // Calls showNewPokemon() when the variable currentNumber has been updated.
   useEffect(() => {
     showNewPokemon();
   }, [props.currentNumber.current]);

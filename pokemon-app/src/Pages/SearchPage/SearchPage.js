@@ -5,6 +5,9 @@ import Star from "../../SharedComponents/Star.js";
 import { PokemonsContext } from "../../App";
 import React, { useEffect, useRef, useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
+import { convertPokemonNumberToString } from "../../utils/pokemonUtils";
+
+const DEFAULT_BODY_COLOR = "#87CEEB";
 
 export default function SearchPage() {
   const location = useLocation();
@@ -17,12 +20,12 @@ export default function SearchPage() {
   const [currentPokemon, setCurrentPokemon] = useState(
     params.get("current-pokemon")
   );
-  const STANDARD_BODY_COLOR = "#87CEEB";
 
   // Updates the image on the search page
   useEffect(() => {
-    if (currentPokemon !== "" && pokemons[currentPokemon]) {
-      let pokemonNumber = pokemons[currentPokemon]["Number"].substring(1);
+    if (currentPokemon) {
+      let pokemonNumber = String(pokemons[currentPokemon]).padStart(3, "0");
+      console.log(pokemonNumber);
       setImageURL(
         `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemonNumber}.png`
       );
@@ -32,7 +35,7 @@ export default function SearchPage() {
 
   // Sets the body background color when component is mounted
   useEffect(() => {
-    document.body.style.background = STANDARD_BODY_COLOR;
+    document.body.style.background = DEFAULT_BODY_COLOR;
   }, []);
 
   return (
@@ -63,16 +66,14 @@ export default function SearchPage() {
         <>
           <div className="img-and-info">
             <span className="pokemon-name">
-              {pokemons[currentPokemon]["Name"]}{" "}
-              {pokemons[currentPokemon]["Number"]}
+              {`${currentPokemon} ${convertPokemonNumberToString(
+                pokemons[currentPokemon]
+              )}`}
             </span>
             <div className="img-div">
               <img src={imageURL} alt={"A Pokemon"} className="pokemon-img" />
               <Star pokemonName={currentPokemon} />
-              <Information
-                currentPokemon={currentPokemon}
-                pokemons={pokemons}
-              />
+              <Information currentPokemon={currentPokemon} />
             </div>
           </div>
         </>
