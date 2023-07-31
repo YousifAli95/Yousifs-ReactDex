@@ -12,10 +12,12 @@ export default function FavouritePokemonCard({ pokemonName }) {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    const pokeDexNumber = padWithLeadingZeros(pokemons[pokemonName], 3);
-    setImage(
-      `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokeDexNumber}.png`
-    );
+    if (pokemons[pokemonName]) {
+      const pokeDexNumber = padWithLeadingZeros(pokemons[pokemonName], 3);
+      setImage(
+        `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokeDexNumber}.png`
+      );
+    }
   }, [pokemons, pokemonName]);
 
   return (
