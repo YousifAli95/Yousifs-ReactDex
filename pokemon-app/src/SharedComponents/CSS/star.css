@@ -1,7 +1,7 @@
 .star {
     position: absolute;
     width: 3rem;
-    left: 92%;
+    left: 91%;
     top: 1%;
     cursor: pointer;
 }
@@ -20,6 +20,7 @@
     fill: white !important;
 }
 
-.starleft-87 {
-    left: 87%;
+.star-favourite-page {
+    left: 83.5%;
+    top: 3%;
 }

@@ -10,7 +10,6 @@ import { getColorAsHexadecimal } from "../../../utils/pokemonUtils";
  */
 export default function useChangeBackgroundColor(pokemonObject) {
   useEffect(() => {
-    console.log(pokemonObject);
     if (pokemonObject) {
       document.body.style.background = getColorAsHexadecimal(
         pokemonObject.color.name

@@ -37,7 +37,7 @@ export default function FavouritePokemonCard({ pokemonName }) {
           />
           <Star
             pokemonName={pokemonName}
-            extraClasses="starleft-87 white-hover"
+            extraClasses="star-favourite-page white-hover"
           />
         </div>
       </div>

@@ -1,20 +1,14 @@
 .info-container {
   display: grid;
+  width: 100%;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, 5rem);
   column-gap: 10rem;
   row-gap: 2rem;
-  margin: 2rem;
+  margin: 2rem 0;
 }
-.super-info-container {
-  display: flex;
-  flex-direction: column;
-  margin: 2rem;
-  align-items: center;
-  justify-content: center;
-}
+
 .info-div {
-  width: 11.9rem;
-  height: 5rem;
   outline: 0.2rem solid var(--DarkBlue);
   border: 0.1rem solid var(--DarkBlue);
   box-shadow: rgba(0, 0, 0, 0.25) 0 1rem 2rem;
@@ -24,13 +18,11 @@
   justify-content: center;
   font-size: 2rem;
   border-radius: 0.4rem;
+  grid-column: span 1;
 }
 
-#generation {
-  width: 34rem;
+.big-column {
   font-size: 2.5rem;
+  grid-column: span 2;
 }
-#kindOfPokemon {
-  width: 34rem;
-  font-size: 2.5rem;
-}
+

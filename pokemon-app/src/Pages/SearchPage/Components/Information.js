@@ -14,38 +14,36 @@ export default function Information({ currentPokemon }) {
   return (
     <>
       {pokemonObject && (
-        <div className="super-info-container">
-          <div className="info-div" id="kindOfPokemon">
+        <div className="info-container">
+          <div className="info-div big-column" id="kindOfPokemon">
             <span>{pokemonObject.category}</span>
           </div>
-          <div className="info-container">
-            <div className="info-div" id="type1">
+          <div className="info-div" id="type1">
+            <img
+              src={require(`../../../Assets/Types/${pokemonObject.types[0]}.png`)}
+              alt="Type1"
+            />
+          </div>
+          <div className="info-div" id="type2">
+            {pokemonObject?.types.length > 1 ? (
               <img
-                src={require(`../../../Assets/Types/${pokemonObject.types[0]}.png`)}
+                src={require(`../../../Assets/Types/${pokemonObject.types[1]}.png`)}
                 alt="Type1"
               />
-            </div>
-            <div className="info-div" id="type2">
-              {pokemonObject?.types.length > 1 ? (
-                <img
-                  src={require(`../../../Assets/Types/${pokemonObject.types[1]}.png`)}
-                  alt="Type1"
-                />
-              ) : (
-                <img
-                  src={require(`../../../Assets/Types/${pokemonObject.types[0]}.png`)}
-                  alt="Type2"
-                />
-              )}
-            </div>
-            <div className="info-div" id="Height">
-              <span>{pokemonObject.height} m</span>
-            </div>
-            <div className="info-div" id="Weight">
-              <span>{pokemonObject.weight} kg</span>
-            </div>
+            ) : (
+              <img
+                src={require(`../../../Assets/Types/${pokemonObject.types[0]}.png`)}
+                alt="Type2"
+              />
+            )}
           </div>
-          <div className="info-div" id="generation">
+          <div className="info-div" id="Height">
+            <span>{pokemonObject.height} m</span>
+          </div>
+          <div className="info-div" id="Weight">
+            <span>{pokemonObject.weight} kg</span>
+          </div>
+          <div className="info-div big-column" id="generation">
             <span>{formatGeneration(pokemonObject.generation.name)}</span>
           </div>
         </div>
