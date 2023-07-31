@@ -33,6 +33,26 @@ export function formatFlavorText(text) {
     .replace(/(?<=(?:^|[.?!])\W*)[a-z]/g, (i) => i.toUpperCase());
 }
 
+// Converts the catch rate from a number to a text message.
+export function formatCatchRate(catchrate) {
+  const catchRateNumber = parseInt(catchrate);
+
+  switch (true) {
+    case catchRateNumber >= 0 && catchRateNumber <= 30:
+      return "Very difficult to catch";
+    case catchRateNumber > 30 && catchRateNumber <= 100:
+      return "Difficult to catch";
+    case catchRateNumber > 100 && catchRateNumber <= 150:
+      return "Medium difficult to catch";
+    case catchRateNumber > 150 && catchRateNumber <= 200:
+      return "Easy to catch";
+    case catchRateNumber > 200:
+      return "Very easy to catch";
+    default:
+      return "Unknown catch rate";
+  }
+}
+
 //Converts an "number" to a "width" long string that is zero padded. 7 Becomes 007 if "width" is 3 for example.
 export function padWithLeadingZeros(number, width) {
   return number.toString().padStart(width, "0");

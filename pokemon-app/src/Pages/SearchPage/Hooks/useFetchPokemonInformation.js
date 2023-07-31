@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import {
   formatFlavorText,
   formatGeneration,
+  formatCatchRate,
 } from "../../../utils/pokemonUtils";
 
 function useFetchPokemonInformation(currentPokemon, pokemons) {
@@ -53,6 +54,8 @@ function useFetchPokemonInformation(currentPokemon, pokemons) {
         (entry) => entry.language.name === "en"
       );
       newPokemonObject["flavorText"] = formatFlavorText(flavorText.flavor_text);
+
+      newPokemonObject["catchRate"] = formatCatchRate(speciesData.capture_rate);
 
       newPokemonObject["color"] = speciesData.color.name;
 

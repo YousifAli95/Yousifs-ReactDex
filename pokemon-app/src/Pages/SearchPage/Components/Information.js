@@ -49,6 +49,9 @@ export default function Information({ currentPokemon }) {
           <div className="info-div big-column" id="generation">
             <span>{pokemonObject.generation}</span>
           </div>
+          <div className="info-div big-column" id="catch-rate">
+            <span>{pokemonObject.catchRate}</span>
+          </div>
         </div>
       )}
     </>
