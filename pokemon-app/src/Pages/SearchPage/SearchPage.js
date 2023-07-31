@@ -3,7 +3,7 @@ import Information from "./Components/Information";
 import NavigationButtons from "./Components/NavigationButtons";
 import Star from "../../SharedComponents/Star.js";
 import { PokemonsContext } from "../../App";
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { convertPokemonNumberToString } from "../../utils/pokemonUtils";
 
@@ -13,7 +13,6 @@ export default function SearchPage() {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const { pokemons } = useContext(PokemonsContext);
-  const currentNumber = useRef("");
   const [inputValue, setInputValue] = useState("");
   const [showImage, setShowImage] = useState(false);
   const [imageURL, setImageURL] = useState("");
@@ -48,7 +47,6 @@ export default function SearchPage() {
           setShowImage={setShowImage}
           setCurrentPokemon={setCurrentPokemon}
           currentPokemon={currentPokemon}
-          currentNumber={currentNumber}
         />
       </div>
 
@@ -57,9 +55,7 @@ export default function SearchPage() {
           currentPokemon={currentPokemon}
           setCurrentPokemon={setCurrentPokemon}
           setInputValue={setInputValue}
-          currentNumber={currentNumber}
           showImage={showImage}
-          width={"40 rem"}
         />
       </div>
       {showImage && (

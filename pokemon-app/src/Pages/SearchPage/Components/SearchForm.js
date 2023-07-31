@@ -49,17 +49,16 @@ export default function SearchForm(props) {
 
     let currentPokemon = pokemonNames[findIndex];
     console.log(currentPokemon);
-    props.setCurrentPokemon(currentPokemon);
     navigate(`/`);
     console.log(pokemons[currentPokemon]);
 
-    props.currentNumber.current = pokemons[currentPokemon];
+    props.setCurrentPokemon(currentPokemon);
   }
 
-  // Calls showNewPokemon() when the variable currentNumber has been updated.
+  // Calls showNewPokemon() when the variable currentPokemon has been updated.
   useEffect(() => {
     showNewPokemon();
-  }, [props.currentNumber.current]);
+  }, [props.currentPokemon]);
 
   // Shows a new pokemon if the input from the form is valid. Displays error message otherwise.
   function showNewPokemon(event) {

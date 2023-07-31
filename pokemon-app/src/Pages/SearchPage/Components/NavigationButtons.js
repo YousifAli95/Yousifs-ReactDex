@@ -1,8 +1,4 @@
 import "../CSS/arrows.css";
-import {
-  ConvertPokemonNumberToInt,
-  convertPokemonNumberToString,
-} from "../../../utils/pokemonUtils";
 import { PokemonsContext } from "../../../App";
 import { useContext, useRef, useEffect } from "react";
 
@@ -38,11 +34,10 @@ export default function NavigationButtons(props) {
 
   function updatePokemon(newNumber) {
     const newPokemon = getNewPokemon(newNumber);
+    props.setInputValue("");
     console.log("UpdatePokemon():", newNumber, newPokemon);
-    props.setInputValue(newPokemon);
 
-    //This will trigger an useEffect that will trigger the changing of current shown pokemon
-    props.currentNumber.current = newNumber;
+    props.setCurrentPokemon(newPokemon);
   }
 
   // Will change the current shown pokemon to a new one which has plus/minus 1 diffrence in number
