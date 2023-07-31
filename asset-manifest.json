@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Yousifs-ReactDex/static/css/main.65c5ea06.css",
-    "main.js": "/Yousifs-ReactDex/static/js/main.04fb3c43.js",
+    "main.js": "/Yousifs-ReactDex/static/js/main.190f702c.js",
     "static/media/pokemonball.png": "/Yousifs-ReactDex/static/media/pokemonball.a835fb9ba399394db72d.png",
     "static/media/Reddit.svg": "/Yousifs-ReactDex/static/media/Reddit.6fc8655026fd8f8ba501c1f7e10636fd.svg",
     "static/media/Twitter.svg": "/Yousifs-ReactDex/static/media/Twitter.c8a4db4dcfc16d003536e1dd0b4409fe.svg",
@@ -11,10 +11,10 @@
     "static/media/Facebook.svg": "/Yousifs-ReactDex/static/media/Facebook.3033cf40b7f98a6cf8e7c0147ff974f8.svg",
     "static/media/SideBarStar.svg": "/Yousifs-ReactDex/static/media/SideBarStar.d5b1dc9e424170fe67dea3bea3400bbe.svg",
     "main.65c5ea06.css.map": "/Yousifs-ReactDex/static/css/main.65c5ea06.css.map",
-    "main.04fb3c43.js.map": "/Yousifs-ReactDex/static/js/main.04fb3c43.js.map"
+    "main.190f702c.js.map": "/Yousifs-ReactDex/static/js/main.190f702c.js.map"
   },
   "entrypoints": [
     "static/css/main.65c5ea06.css",
-    "static/js/main.04fb3c43.js"
+    "static/js/main.190f702c.js"
   ]
 }
