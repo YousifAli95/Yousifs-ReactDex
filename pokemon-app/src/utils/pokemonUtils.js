@@ -23,6 +23,16 @@ export function formatPokemonName(pokemonName) {
   return pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
 }
 
+// Capitalizes the first letter in each sentence and makes all other letters lower case.
+// Removes also all new lines and "form feeds".
+export function formatFlavorText(text) {
+  return text
+    .replace("\n", " ")
+    .replace("\f", " ")
+    .toLowerCase()
+    .replace(/(?<=(?:^|[.?!])\W*)[a-z]/g, (i) => i.toUpperCase());
+}
+
 //Converts an "number" to a "width" long string that is zero padded. 7 Becomes 007 if "width" is 3 for example.
 export function padWithLeadingZeros(number, width) {
   return number.toString().padStart(width, "0");

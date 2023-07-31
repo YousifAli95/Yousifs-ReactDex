@@ -11,12 +11,18 @@
  */
 
 import { useEffect, useState } from "react";
+import {
+  formatFlavorText,
+  formatGeneration,
+} from "../../../utils/pokemonUtils";
 
 function useFetchPokemonInformation(currentPokemon, pokemons) {
   const [pokemonObject, setPokemonObject] = useState(null);
 
   const fetchPokemonInformation = async () => {
     try {
+      const newPokemonObject = {};
+
       const speciesResponse = await fetch(
         `https://pokeapi.co/api/v2/pokemon-species/${pokemons[currentPokemon]}`
       );
@@ -29,24 +35,36 @@ function useFetchPokemonInformation(currentPokemon, pokemons) {
         pokemonResponse.json(),
       ]);
 
+      newPokemonObject["name"] = pokemonDetails.name;
+
+      newPokemonObject["generation"] = formatGeneration(
+        speciesData.generation.name
+      );
+
       const types = pokemonDetails.types.map((typeData) => typeData.type.name);
+      newPokemonObject["types"] = types;
 
       const category = speciesData.genera.find(
         (genus) => genus.language.name === "en"
       );
+      newPokemonObject["category"] = category.genus;
 
-      speciesData["category"] = category.genus;
-      speciesData["types"] = types;
-
-      speciesData["height"] = (parseFloat(pokemonDetails.height) / 10).toFixed(
-        1
+      const flavorText = speciesData.flavor_text_entries.find(
+        (entry) => entry.language.name === "en"
       );
+      newPokemonObject["flavorText"] = formatFlavorText(flavorText.flavor_text);
 
-      speciesData["weight"] = (parseFloat(pokemonDetails.weight) / 10).toFixed(
-        1
-      );
+      newPokemonObject["color"] = speciesData.color.name;
 
-      setPokemonObject(speciesData);
+      newPokemonObject["height"] = (
+        parseFloat(pokemonDetails.height) / 10
+      ).toFixed(1);
+
+      newPokemonObject["weight"] = (
+        parseFloat(pokemonDetails.weight) / 10
+      ).toFixed(1);
+
+      setPokemonObject(newPokemonObject);
     } catch (error) {
       console.error("Error fetching data:", error);
     }

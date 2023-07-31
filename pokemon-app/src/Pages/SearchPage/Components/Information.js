@@ -15,8 +15,11 @@ export default function Information({ currentPokemon }) {
     <>
       {pokemonObject && (
         <div className="info-container">
-          <div className="info-div big-column" id="kindOfPokemon">
+          <div className="info-div big-column" id="kind-of-pokemon">
             <span>{pokemonObject.category}</span>
+          </div>
+          <div className="info-div big-column" id="flavor-text">
+            <span>{pokemonObject.flavorText}</span>
           </div>
           <div className="info-div" id="type1">
             <img
@@ -37,14 +40,14 @@ export default function Information({ currentPokemon }) {
               />
             )}
           </div>
-          <div className="info-div" id="Height">
+          <div className="info-div" id="height">
             <span>{pokemonObject.height} m</span>
           </div>
-          <div className="info-div" id="Weight">
+          <div className="info-div" id="weight">
             <span>{pokemonObject.weight} kg</span>
           </div>
           <div className="info-div big-column" id="generation">
-            <span>{formatGeneration(pokemonObject.generation.name)}</span>
+            <span>{pokemonObject.generation}</span>
           </div>
         </div>
       )}

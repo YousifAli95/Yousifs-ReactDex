@@ -12,7 +12,7 @@ export default function useChangeBackgroundColor(pokemonObject) {
   useEffect(() => {
     if (pokemonObject) {
       document.body.style.background = getColorAsHexadecimal(
-        pokemonObject.color.name
+        pokemonObject.color
       );
     }
   }, [pokemonObject]);
