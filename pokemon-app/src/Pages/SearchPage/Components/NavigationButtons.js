@@ -21,7 +21,7 @@ export default function NavigationButtons(props) {
   };
 
   useEffect(() => {
-    if (props.showImage) {
+    if (props.showImage && Object.keys(pokemons).length > 0) {
       console.log("Adding EventListener");
       document.addEventListener("keydown", keyDownHandlerArrow);
 
