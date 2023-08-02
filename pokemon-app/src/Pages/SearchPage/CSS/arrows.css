@@ -26,7 +26,7 @@
   transform: translateY(0.3rem);
 }
 
-.Random-Button {
+.random-button {
   margin: 1.5rem;
   font-size: 1.5rem;
   border: none;
@@ -37,12 +37,19 @@
   cursor: pointer;
 }
 
-.Random-Button:hover{
+.arrow-button:focus,
+.arrow-button:focus-visible {
+  outline: 0.4rem solid var(--DarkBlue);
+}
+
+.random-button:focus,
+.random-button:focus-visible,
+.random-button:hover{
   background-color: var(--DarkBlue);
   color: var(--grey-button-color);
 }
 
-.Random-Button:active {
+.random-button:active {
   box-shadow: 0 4px var(--DarkBlue);
   transform: translateY(0.2rem);
 }
@@ -50,4 +57,9 @@
 #startpage-random-btn {
   width: 100%;
   margin: 2rem 0;
+}
+
+.arrow-button{
+  background-color: rgb(0,0,0,0);
+  border: none;
 }

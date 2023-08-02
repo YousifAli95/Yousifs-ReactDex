@@ -1,4 +1,4 @@
-import "../CSS/arrows.css";
+import "../CSS/Arrows.css";
 import { PokemonsContext } from "../../../App";
 import { useContext, useRef, useEffect } from "react";
 
@@ -74,33 +74,43 @@ export default function NavigationButtons(props) {
     <div className="two-arrows">
       {props.showImage ? (
         <>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Small_arrow_pointing_left.svg"
-            alt=""
-            id="left-arrow"
-            className="arrows"
+          <button
+            className="arrow-button"
             data-delta={-1}
             onClick={changePokemon}
             ref={leftArrowButton}
-          />
-          <button onClick={randomPokemon} className="Random-Button">
+          >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Small_arrow_pointing_left.svg"
+              data-delta={-1}
+              alt="left arrow button"
+              id="left-arrow"
+              className="arrows"
+            />
+          </button>
+          <button onClick={randomPokemon} className="random-button">
             Random Pokemon
           </button>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Small_arrow_pointing_left.svg"
-            alt=""
-            id="right-arrow"
-            className="arrows"
+          <button
+            className="arrow-button"
             data-delta={1}
             onClick={changePokemon}
             ref={rightArrowButton}
-          />
+          >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Small_arrow_pointing_left.svg"
+              data-delta={1}
+              alt="right arrow button"
+              id="right-arrow"
+              className="arrows"
+            />
+          </button>
         </>
       ) : (
         <button
           onClick={randomPokemon}
           id="startpage-random-btn"
-          className="Random-Button"
+          className="random-button"
         >
           Random Pokemon
         </button>

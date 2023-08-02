@@ -1,0 +1,58 @@
+.input-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pokemon-name {
+    font-family: "Merienda One", cursive;
+    color: var(--DarkBlue);
+    font-size: 4rem;
+    margin: 1rem;
+}
+
+#pokemon-input {
+    outline: 0.2rem solid var(--DarkBlue);
+    height: 4rem;
+    border: none;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    box-sizing: border-box;
+    font-size: 2rem;
+    width: 30rem;
+    padding: 1rem 1rem;
+}
+
+.pokemon-img {
+    border: 0.3rem solid var(--DarkBlue);
+    box-shadow: rgba(0, 0, 0, 0.5) 0 1rem 2rem;
+    background: rgb(225, 225, 225);
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+    border-radius: 0.9rem;
+}
+
+.img-and-info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.arrows-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-div {
+    position: relative;
+    width: 34.5rem;
+    box-sizing: border-box;
+}
+
+.img-div * {
+    box-sizing: border-box;
+}

@@ -6,6 +6,7 @@ import { PokemonsContext } from "../../App";
 import React, { useEffect, useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { convertPokemonNumberToString } from "../../utils/pokemonUtils";
+import "./CSS/SearchPage.css";
 
 const DEFAULT_BODY_COLOR = "#87CEEB";
 
