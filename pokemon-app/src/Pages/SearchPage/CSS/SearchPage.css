@@ -56,3 +56,22 @@
 .img-div * {
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 500px) {
+    #pokemon-input {
+        width: 20rem;
+    }
+
+    #submit-btn {
+        width: 8rem;
+    }
+
+    .pokemon-name {
+        font-size: 2.8rem;
+    }
+
+    .img-div {
+        width: 28rem;
+    }
+
+}

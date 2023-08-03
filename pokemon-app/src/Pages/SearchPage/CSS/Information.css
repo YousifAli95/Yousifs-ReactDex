@@ -26,7 +26,12 @@
   grid-column: span 2;
 }
 
-#flavor-text{
+#flavor-text {
   padding: 1rem;
 }
 
+@media screen and (max-width: 500px) {
+  .info-container {
+    column-gap: 5rem;
+  }
+}

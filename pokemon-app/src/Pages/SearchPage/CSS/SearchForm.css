@@ -9,6 +9,7 @@
   color: var(--DarkBlue);
   cursor: pointer;
 }
+
 #submit-btn:active {
   box-shadow: 0 4px var(--DarkBlue);
   transform: translateY(0.2rem);
@@ -38,3 +39,9 @@ label {
   align-items: center;
 }
 
+@media screen and (max-width: 500px) {
+  label {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}

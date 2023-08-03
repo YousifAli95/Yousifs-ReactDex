@@ -71,7 +71,7 @@ export default function NavigationButtons(props) {
   }
 
   return (
-    <div className="two-arrows">
+    <div className="navigation-buttons-container">
       {props.showImage ? (
         <>
           <button
