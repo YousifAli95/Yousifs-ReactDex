@@ -30,8 +30,3 @@ body {
   background: var(--lightBlue);
   margin: 0;
 }
-
-.dummy-sidebar {
-  width: var(--side-bar-width);
-  position: relative;
-}

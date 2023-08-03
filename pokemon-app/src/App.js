@@ -28,7 +28,6 @@ export default function App() {
         }}
       >
         <Sidebar />
-        <div className="dummy-sidebar"></div>
         <div className="route-container">
           <Routes>
             <Route path="/" element={<SearchPage />} />
