@@ -46,20 +46,18 @@
   padding: 0;
 }
 
-.arrow-button:focus .arrows,
-.arrow-button:focus-visible .arrows {
-  filter: invert(99%) sepia(38%) saturate(35%) hue-rotate(296deg) brightness(60%) contrast(50%);
-}
-
 .arrow-button:active {
   outline: none;
 }
 
-.random-button:focus,
-.random-button:focus-visible,
 .random-button:hover {
   background-color: var(--DarkBlue);
   color: var(--grey-button-color);
+}
+
+.random-button:focus,
+.random-button:focus-visible{
+  outline: 0.35rem solid var(--DarkBlue);
 }
 
 .random-button:active {

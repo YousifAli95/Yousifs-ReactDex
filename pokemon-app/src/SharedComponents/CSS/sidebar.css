@@ -13,7 +13,8 @@
   height: fill-available;
   width: var(--side-bar-width);
   background: #393982;
-  position: fixed;
+  position: sticky;
+  top: 0;
   transition: width 500ms ease;
   display: flex;
   flex-direction: column;
